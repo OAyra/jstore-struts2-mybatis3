@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.jpetstore.mappers.ItemMapper">
+	<select id="selectItemList" parameterType="string" 
+				resultType="com.usemodj.jpetstore.domain.Item">
+		SELECT
+			itemid		AS itemId	 	,  
+			productid	AS productId,
+			listprice	AS listPrice,
+			unitcost	AS unitCost	,  
+			supplier	AS supplierId, 
+			status		AS status		,  
+			attr1			AS attribute1, 
+			attr2			AS attribute2, 
+			attr3			AS attribute3, 
+			attr4			AS attribute4, 
+			attr5			AS attribute5
+		FROM item
+	<where>
+	<if test="productId != null">
+	  productid = #{productId}
+	</if>
+	<if test="status != null">
+	  AND status = #{status}
+	</if>
+	</where>
+	</select>
+	
+  <select id="selectItemIdList" 
+        resultType="com.usemodj.jpetstore.domain.Item">
+    SELECT
+      itemid    AS itemId   ,  
+      productid AS productId,
+      listprice AS listPrice,
+      unitcost  AS unitCost ,  
+      supplier  AS supplierId, 
+      status    AS status   ,  
+      attr1     AS attribute1, 
+      attr2     AS attribute2, 
+      attr3     AS attribute3, 
+      attr4     AS attribute4, 
+      attr5     AS attribute5
+    FROM item
+  </select>
+	<select id="selectItem" parameterType="string"
+				resultType="com.usemodj.jpetstore.domain.Item">
+		SELECT
+			itemid		AS itemId	 	,  
+			productid	AS productId,
+			listprice	AS listPrice,
+			unitcost	AS unitCost	,  
+			supplier	AS supplierId, 
+			status		AS status		,  
+			attr1			AS attribute1, 
+			attr2			AS attribute2, 
+			attr3			AS attribute3, 
+			attr4			AS attribute4, 
+			attr5			AS attribute5
+		FROM item
+		WHERE itemid = #{itemId}
+	</select>
+	<update id="updateStatus" >
+	  UPDATE item SET status = #{status}
+	   WHERE itemid = #{itemId}
+	</update>
+	<update id="updateStatusByCategory">
+    UPDATE item i  SET i.status = #{status}
+      WHERE i.productid IN ( SELECT p.productid 
+                            FROM  product p
+                            WHERE p.category = #{categoryId});
+	</update>
+	<update id="updateStatusByProduct">
+	  UPDATE item SET status = #{status}
+	   WHERE productid = #{productId}
+	</update>
+	<update id="updateItem" parameterType="Item">
+    UPDATE item SET
+      listprice = #{listPrice},
+      unitcost  = #{unitCost},  
+      supplier  = #{supplierId}, 
+      status    = #{status}   ,  
+      attr1     = #{attribute1}, 
+      attr2     = #{attribute2}, 
+      attr3     = #{attribute3}, 
+      attr4     = #{attribute4}, 
+      attr5     = #{attribute5}
+    WHERE itemid = #{itemId}
+	</update> 
+	
+	<insert id="insertItem" parameterType="Item">
+	  INSERT INTO item (itemid, productid,listprice,unitcost,supplier,status,attr1,attr2,attr3,attr4,attr5)
+	  VALUES ( #{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId}, #{status}, 
+	           #{attribute1},#{attribute2}, #{attribute3}, #{attribute4}, #{attribute5}) 
+	</insert>
+</mapper>

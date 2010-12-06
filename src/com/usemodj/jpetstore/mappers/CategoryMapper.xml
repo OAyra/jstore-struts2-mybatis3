@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.jpetstore.mappers.CategoryMapper">
+  <!--<cache type="org.mybatis.caches.oscache.LoggingOSCache"/>-->
+  <cache type="org.mybatis.caches.oscache.OSCache"/>
+  
+  <resultMap id="selectCategoryListResult" type="com.usemodj.jpetstore.domain.Category">
+		<id property="categoryId" column="catid"/>
+    <result property="name" column="name"/>
+    <result property="description" column="descn"/>
+    <result property="status" column="status"/>
+  </resultMap>
+	<select id="selectCategoryList" resultMap="selectCategoryListResult">
+		SELECT catid, name, descn, status 
+			FROM category
+		<if test="status != null">
+		  WHERE status = #{status}
+		</if>
+	</select>
+	<update id="updateStatus">
+	  UPDATE category  SET status = #{status}
+      WHERE catid = #{categoryId}
+  
+	</update>
+	<insert id="insertCategory" parameterType="Category">
+	  INSERT INTO category (catid, name, descn, status)
+	   VALUES ( #{categoryId},#{name}, #{description}, #{status})
+	</insert>
+</mapper>

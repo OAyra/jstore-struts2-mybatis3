@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.jpetstore.mappers.FileAttachMapper">
+  <insert id="insertFileAttach" parameterType="FileAttach">
+    INSERT INTO file_attach (attach_id, item_id,filename,filepath, content_type,filesize,caption)
+      VALUES (null, #{itemId},#{filename},#{filepath},#{contentType},#{filesize},#{caption})
+  </insert>
+  <select id="selectItemFileList" parameterType="string" resultType="FileAttach">
+    SELECT attach_id AS attachId,
+            item_id AS itemId,
+            filename AS filename,
+            filepath AS filepath,
+            content_type AS contentType,
+            filesize AS filesize,
+            caption AS caption 
+      FROM file_attach
+      WHERE item_id = #{itemId}
+  </select>
+  <select id="selectFileAttachIN" resultType="FileAttach">
+    SELECT attach_id AS attachId,
+            item_id AS itemId,
+            filename AS filename,
+            filepath AS filepath,
+            content_type AS contentType,
+            filesize AS filesize,
+            caption AS caption 
+      FROM file_attach
+      WHERE attach_id IN
+    <foreach item="item" index="index" collection="array"
+    open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  <delete id="deleteFileAttachIN">
+    DELETE FROM file_attach 
+    WHERE attach_id IN
+    <foreach item="item" index="index" collection="array"
+    open="(" separator="," close=")">
+    #{item}
+    </foreach>
+  </delete>
+</mapper>
