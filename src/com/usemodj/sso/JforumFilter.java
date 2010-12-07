@@ -1,3 +1,4 @@
+
 package com.usemodj.sso;
 
 import java.io.IOException;
@@ -14,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.usemodj.jpetstore.domain.Signon;
-
 import uk.co.smartkey.jforumsecuresso.SecurityTools;
+
+import com.usemodj.jpetstore.domain.Signon;
 
 public class JforumFilter implements Filter {
 	private static Logger logger = Logger.getLogger(JforumFilter.class);
