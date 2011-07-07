@@ -25,7 +25,7 @@
 
   <insert id="insertAccount"
           parameterType="com.usemodj.jpetstore.domain.Account">
-	   INSERT INTO Account 
+	   INSERT INTO account 
 	    (userid	 ,  
 	    email			, 
 	    firstname,  
@@ -58,7 +58,7 @@
 
   <update id="updateAccount"
           parameterType="com.usemodj.jpetstore.domain.Account">
-    UPDATE Account
+    UPDATE account
     SET userid	  = #{userid	  },
         email			= #{email			},
         firstname = #{firstname },
