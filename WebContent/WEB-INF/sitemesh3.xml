@@ -1,0 +1,27 @@
+  <sitemesh>
+ <!-- Map default decorator. This shall be applied to all paths if no other paths match. -->
+  <mapping decorator="/decorators/main-decorator.jsp"/>
+  <!-- Map decorators to path patterns. -->
+    <mapping path="/*" decorator="/decorators/main-decorator.jsp"/>
+    <mapping path="/admin/*" decorator="/decorators/admin-decorator.jsp"/>
+   <mapping path="/*.special.jsp" decorator="/decorators/special-decorator.html"/>
+   
+    <!--  forum bbpress -->
+    <mapping path="/forum/*" decorator="/forum/default/decorators/front-decorator.jsp"/>
+   <mapping path="/forum/admin/*" decorator="/forum/default/decorators/admin-decorator.jsp"/>
+
+
+  <!-- Alternative convention. This is more verbose but allows multiple decorators 
+       to be applied to a single path. -->
+  <mapping>
+    <path>/articles/*</path>
+    <decorator>/decorators/article.html</decorator>
+    <decorator>/decorators/two-page-layout.html</decorator>
+    <decorator>/decorators/common.html</decorator>
+  </mapping>
+
+  <!-- Exclude path from decoration. -->
+  <mapping path="*/admin/category" exclue="true"/>
+  <mapping path="*/shop/category" exclue="true"/>
+
+</sitemesh>

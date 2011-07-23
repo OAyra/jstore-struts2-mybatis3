@@ -1,0 +1,395 @@
+/* RESET CSS */
+@import url(reset.css); 
+
+body {
+  text-align: center;
+  min-width: 984px;
+}
+#wrapper {
+  text-align: left;
+  width: 984px;
+  margin: 0 auto;
+}
+
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input {
+  margin:0;
+  padding:0;
+}
+
+
+body {
+  color:#333333;
+  /*background-color:#DAF3FD;*/
+  background-color:#F5F6F7;
+  font:1em/1.5em gulim,"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
+}
+
+/* makes table rows red when hovered over */
+tr:hover,li:hover {background-color:#ffffee;}
+ 
+/* makes input elements yellow when focus is applied */
+input:focus {background-color:#ffffee;}
+
+td , th {
+  padding:0.1em 1em;
+}
+
+#main {
+  text-align:left;
+  background:none repeat-y scroll 0 0 #ffffff;
+  /*position:relative;*/
+  margin: 0 auto;
+  width:984px;
+  border:5px solid #eeeeee;
+}
+#topbar {
+  -moz-border-radius:4px 4px 4px 4px;
+  background:none repeat scroll 0 0 #F4F6F7;
+  border:1px solid #DDDDDD;
+  clear:both;
+  padding:0;
+  width:980px;
+  padding-top:1px !important;
+  text-align:right;
+  color:#999999;
+  position: relative;
+}
+
+
+#content {
+  /*background:none repeat-x scroll 0 100% transparent;*/
+  color:#333333;
+  padding:18px 20px;
+  line-height:1.4em;
+   border:1px solid #DBE5EA; 
+   float:left;
+   width:700px;
+  -moz-box-shadow:0 2px 3px rgba(0, 0, 0, 0.05);
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  position:relative;
+  display:inline;
+
+}
+
+#content .grid3col {
+  margin:0 0 0 -20px;
+  position:relative;
+  /*width:980px; */
+}
+
+
+#content .grid3col .column {
+  border-left:1px solid #DBDBDB;
+  margin:0;
+  padding:0 15px 0 10px;
+  position:relative;
+  width:210px;
+  height:32em;
+  display:inline;
+}
+/*
+.grid4col .column {
+margin-left:3%;
+width:23%;
+}
+*/
+/*
+.column {
+display:inline;
+}*/
+
+.column {
+  float:left;
+}
+
+#content a.block {
+  height:100%;
+  margin:0;
+}
+
+a.block {
+  color:#555555;
+  cursor:pointer;
+  display:block;
+}
+
+
+a:link, a:visited {
+  text-decoration:none;
+}
+a:hover, a.focus, a:active {
+  color:#666666;
+  cursor:pointer;
+  /*text-decoration:underline;*/
+}
+#content a.block * {
+  position:relative;
+  z-index:5;
+}
+
+input[type="submit"]{
+  padding:3px 20px;
+}
+/* makes submit buttons in some browsers yellow when pressed */
+input[type="submit"]:active {
+  background:yellow;
+}
+a[href^="http:"] {
+  background: url(images/icons/externalLink.gif) no-repeat right top;
+  padding-right: 10px;
+}
+a[href^="mailto:"] {
+  background: url(images/icons/email.png) no-repeat right top;
+  padding-right: 10px;
+}
+a[href$=".rss"], a[href$=".rdf"] {
+background: url(images/icons/feedLink.gif) no-repeat right top;
+padding-right: 10px;
+}
+a.tooltip:hover span, a.tooltip:focus span {
+  display:block;
+  position:absolute;
+  top:1em;
+  left:2em;
+  padding: 0.2em 0.6em;
+  border:1px solid #996633;
+  background-color:#FFFF66;
+  color:#000;
+}
+
+span.more {
+  color:#0088CC;
+  padding-right:10px;
+  white-space:nowrap;
+}
+
+.more {
+  text-align:right;
+}
+
+#content a.block * {
+  position:relative;
+  z-index:5;
+}
+
+button {
+/*  border: 1px solid #989898;
+  background: none; */
+  cursor: pointer;
+}
+
+button.two {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #989898;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: url(../images/button-bg.png) #c5e063 bottom left repeat-x;
+  -moz-box-shadow: 2px 2px 2px #ccc;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #666;
+}
+
+#content a.block img {
+  bottom:0;
+  position:relative;
+  z-index:1;
+}
+
+img {
+  border:0 none;
+}
+/* drop shadow effect */
+/*
+.img-wrapper {
+  background: url(../images/shadow.gif) no-repeat bottom right;
+  clear: right;
+  float: left;
+  position: relative;
+}
+.img-wrapper img {
+  background-color: #fff;
+  border: 1px solid #a9a9a9;
+  padding: 4px;
+  display: block;
+  margin: -5px 5px 5px -5px;
+  position: relative;
+}
+
+img {
+  -webkit-box-shadow: 3px 3px 6px #666;
+  -moz-box-shadow: 3px 3px 6px #666;
+  box-shadow: 3px 3px 6px #666;
+}
+*/
+#main .maincap {
+  font-size:1px;
+  left:0;
+  position:relative;
+  width:984px;
+  /*z-index:5;*/
+}
+
+.maincap.top {
+   background:none no-repeat scroll 0 0 transparent;
+   top:0;
+}
+
+.maincap.bottom {
+  background:none no-repeat scroll 0 100% transparent;
+  bottom:0;
+}
+
+#footer {
+  border-top: 1px solid #DDDDDD;
+  color:#6E6E6E;
+  font-size:11px;
+  margin:22px auto;
+  padding: 12px 0;
+  text-align:center;
+  clear:both;
+  width:980px;
+  position:relative;
+}
+
+
+.odd {
+  background-color: #F4FFE8;
+}
+.even {
+  background-color: #efFFF8;
+}
+
+.clear {
+  display: inline-block;
+}
+/* Holly Hack Targets IE Win only \*/
+* html .clear {height: 1%;}
+.clear {display: block;}
+/* End Holly Hack */
+
+/* table align ceter */
+div.centered 
+{
+  text-align: center;
+}
+div.centered table 
+{
+  margin: 0 auto; 
+  text-align: left;
+}
+
+th {
+  background-color: #E8FFFF;
+  text-align:center;
+}
+
+.centered  h1,h2,h3,h4,h5,h6 {
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.listView {
+  font-size:95%;
+  padding-left:8px;
+  vertical-align:top;
+  width:98%;
+}
+.listView div.result {
+  border-bottom:1px solid #DDDDDD;
+  padding:8px 2px 4px;
+  width:100%;
+}
+div.productImage {
+  display:inline;
+  float:left;
+  padding:0 3px;
+  text-align:center;
+  width:115px;
+}
+.listView div.result div.productData {
+  margin-left:140px;
+}
+.listView div.result div.quantity, 
+.listView div.result div.newPrice, 
+.listView div.result div.listPrice {
+  font-size:105%;
+  margin-right:20px;
+}
+.listView div.result, 
+.listView div.result div.number, 
+.listView div.result div.stars, 
+.listView div.result div.productData 
+.listView div.result div.newPrice, 
+.listView div.result div.listPrice {
+  display:inline;
+  float:left;
+}
+div.result div.title, 
+div.result div.productTitle {
+  font-size:115%;
+  font-weight:bold;
+  padding:0 0 6px;
+}
+div.result div.newPrice span, 
+div.result div.listPrice span {
+  color:#990000;
+  font-weight:bold;
+}
+table.productImageGrid {
+  background-color:#FFFFFF;
+  float:left;
+  margin:0 15px 15px 0;
+  text-align:center;
+}
+
+.box .round1, .box .round2, .box .round4 {
+  font-size:0;
+  height:2px;
+  margin:0;
+  padding:0;
+}
+
+.box .round1 {
+  border-left:1px solid #FFFFFF;
+  border-right:1px solid #FFFFFF;
+}
+
+.box .round2 {
+  border-left:2px solid #FFFFFF;
+  border-right:2px solid #FFFFFF;
+}
+.box .round4 {
+  border-left:4px solid #FFFFFF;
+  border-right:4px solid #FFFFFF;
+}
+
+.box {
+  background:none repeat scroll 0 0 #F7F7F7;
+  margin-bottom:0.6em;
+  margin-right:0.2em;
+  padding:-2px -20px;
+  position:relative;
+}
+
+.box .box-inner ul {
+  margin:0;
+  padding:0;
+  /*width:18em;*/
+  list-style-type: none;
+}
+.box .box-inner ul li {
+  padding-left:30px;
+}
+
+.box_inner {
+  margin:0;
+  padding:0 18px;
+}

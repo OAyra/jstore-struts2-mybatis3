@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="forum" namespace="/forum" extends="struts-default">
+ 	    <action name="forum_*" class="com.usemodj.forum.struts.action.ForumAction" method="{1}">
+	        <result name="list">/forum/default/forumList.jsp</result>
+	        <!--result name="success" type="redirectAction">index.action</result-->
+	    	<result name="redirect" type="redirect">${url}</result>
+	    </action>
+ 	    <action name="*" class="com.usemodj.forum.struts.action.ForumAction" >
+			<result>/forum/default/frontPage.jsp</result>
+		</action>
+
+        <!-- Add actions here -->
+    </package>
+</struts>
