@@ -15,6 +15,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.usemodj.forum.mybatis.builder.ForumMybatisConfig;
 import com.usemodj.mybatis.builder.MybatisConfig;
 import com.usemodj.struts.Constants;
 
@@ -108,7 +109,7 @@ public class BaseAction extends ActionSupport implements SessionAware,
     }
     
     /**
-     * MyBatis SqlSessionFactory of Application scope
+     * Default MyBatis SqlSessionFactory of Application scope
      */
 	public SqlSessionFactory getSqlSessionFactory() {
 		Object factory = getApplication(Constants.SQL_SESSION_FACTORY);
@@ -119,8 +120,27 @@ public class BaseAction extends ActionSupport implements SessionAware,
 		}
 		return (SqlSessionFactory)factory;
 	}
+	
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 	    setApplication(Constants.SQL_SESSION_FACTORY, sqlSessionFactory);
+	}
+
+	/**
+	 * 
+	 * @return Forum SqlSessionFactory
+	 */
+	public SqlSessionFactory getForumSqlSessionFactory() {
+		Object factory = getApplication(com.usemodj.forum.Constants.FORUM_SQL_SESSION_FACTORY);
+		if( null == factory) {
+			// create SqlSessionFactory
+		    factory = new ForumMybatisConfig().getSqlSessionFactory();
+		    setForumSqlSessionFactory((SqlSessionFactory)factory);
+		}
+		return (SqlSessionFactory)factory;
+	}
+	
+	public void setForumSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+	    setApplication(com.usemodj.forum.Constants.FORUM_SQL_SESSION_FACTORY, sqlSessionFactory);
 	}
 	/**
 	 * 		-- ServletRequestAware --

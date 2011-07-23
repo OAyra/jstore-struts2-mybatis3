@@ -17,7 +17,7 @@
     </discriminator>
   </resultMap>
     
-  <resultMap id="blogWithPosts" type="Blog">
+  <resultMap id="blogWithPosts" type="com.usemodj.blog.domain.Blog">
     <id property="id" column="id"/>
     <result property="title" column="title"/>
     <association property="author" column="author_id"
@@ -68,7 +68,7 @@
 
   <resultMap id="draftPost" type="com.usemodj.blog.domain.DraftPost" extends="joinedPost"/>
 
-  <resultMap id="blogJoinedWithPostsAndAuthor" type="Blog">
+  <resultMap id="blogJoinedWithPostsAndAuthor" type="com.usemodj.blog.domain.Blog">
     <id property="id" column="blog_id"/>
     <result property="title" column="blog_title"/>
     <association property="author" column="blog_author_id" resultMap="joinedAuthor"/>

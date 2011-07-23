@@ -4,9 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.usemodj.jpetstore.mappers.CategoryMapper">
-  <!--<cache type="org.mybatis.caches.oscache.LoggingOSCache"/>-->
-  <cache type="org.mybatis.caches.oscache.OSCache"/>
-  
+   <!-- <cache type="org.mybatis.caches.oscache.OSCache"/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<cache />
+	
   <resultMap id="selectCategoryListResult" type="com.usemodj.jpetstore.domain.Category">
 		<id property="categoryId" column="catid"/>
     <result property="name" column="name"/>

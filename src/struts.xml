@@ -122,6 +122,11 @@
    </package>
  
     <package name="admin" namespace="/admin" extends="struts-default">
+    	<!-- 
+          <action name="index" class="com.usemodj.struts.action.BaseAction">
+         <result  type="redirectAction">category_list</result>
+         </action>
+         -->
       <action name="category_*" class="com.usemodj.jpetstore.struts.admin.action.CategoryAction" method="{1}">
         <result name="success">/admin/catalog/category.jsp</result>
         <result name="list">/admin/catalog/categoryList.jsp</result>
@@ -177,5 +182,6 @@
     </package>
 
     <!-- Add packages here -->
-
+	<include file="forum-struts.xml"/>
+	
 </struts>

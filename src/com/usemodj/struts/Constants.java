@@ -17,4 +17,7 @@ public final class Constants {
 	/*  Sequence table name value  */
 	public static final String SEQUENCE_ORD = "ORD"; //Order name
 	
+	/* forum SqlSessionFactory */
+	//public static final String FORUM_SQL_SESSION_FACTORY = "forumSqlSessionFactory";
+	
 }

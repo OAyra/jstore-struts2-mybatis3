@@ -37,7 +37,7 @@ public class JforumFilter implements Filter {
 		Signon signon = (Signon)((HttpServletRequest)request).getSession().getAttribute("login");
 	    // Ensure that filter is only applied once per request.
 		if( signon == null){
-			logger.debug("-- signon is null");
+			logger.debug("--JForumFilter: signon is null");
 			
 	    	request.removeAttribute( FILTER_APPLIED);
 			//delete the cookie using the predefined cookie name

@@ -17,7 +17,7 @@ public class SignonService {
 		try {
 			SignonMapper mapper = openSession.getMapper(SignonMapper.class);
 			Signon signon = mapper.selectSignon(username);
-			if( null != signon) logger.debug(" -- Signon username = " + signon.getUsername()+ " , password = "+ signon.getPassword());
+			if( null != signon) logger.debug(" -- Signon username = " + signon.getUsername());
 			else logger.debug(" --SignonService.selectSignon(): Signon is null! --");
 			return signon;
 		} catch (Exception e) {

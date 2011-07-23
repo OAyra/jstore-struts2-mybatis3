@@ -1,14 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="decorator"	uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title><decorator:title default="순천만 미나리" /></title>
+<title><sitemesh:write property="title" default="순천만 미나리"/></title>
 <link href="<%=request.getContextPath()%>/decorators/main.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/prototype.js"></script>
+<script  src="<%=request.getContextPath()%>/scripts/prototype.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/scripts/scriptaculous.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/scripts/simple-slide-show.js" type="text/javascript"></script>
 <style>
@@ -40,7 +38,7 @@
 </style>
 
 
-<decorator:head />
+<sitemesh:write property="head" />
 <script type="text/javascript">
   document.observe("dom:loaded", function() {
        new Ajax.Updater($('categoryLink'), "<%= request.getContextPath() %>/shop/category",{asynchronous:true, evalJS:true});
@@ -51,10 +49,9 @@
 </head>
 
 <body>
-
 	<div id="main">
 		<div id="topbar">
-			<div style="float:left"><a href="<%=request.getContextPath()%>">홈:순천만 미나리</a></div>
+			<div style="float:left"><a href="<%=request.getContextPath()%>">홈:포럼 </a></div>
 			
 		<% if(null == session.getAttribute("login")){ %>
 		  <a href="<%=request.getContextPath()%>/login_input?url=<s:text name='hostname'/><%=request.getRequestURI()%>?<%=request.getQueryString() %>"><s:text name="login"/></a>
@@ -66,18 +63,12 @@
 		
 		| <a href="<%= request.getContextPath() %>/shop/cart?url=<s:text name='hostname'/><%=request.getRequestURI()%>?<%=request.getQueryString() %>"><s:text name="cart"/></a> &nbsp;
 		</div>
-		<%-- 
-		<div style="float: right; width: 20em; margin: 0pt 0pt 1em 2em;">
-			<page:applyDecorator name="widget" page="/google.html" />
-			<page:applyDecorator name="widget" page="/tiny-panel.html" /> 
-		</div>
-		--%>
 		<div class="slide-show" style="text-align:center">
 			<ul id="slide-images">
-				<li><img  src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide.png" alt="One" title="One" /></li>
-				<li><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide2.png" alt="Two" title="Two" /></li>
-				<li><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide.png" alt="Three" title="Three" /></li>
-				<li><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide2.png" alt="Four" title="Four" /></li>
+				<li><a href='<s:url namespace="/" action="index"/>'><img  src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide.png" alt="One" title="One" /></a></li>
+				<li><a href='<s:url namespace="/" action="index"/>'><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide2.png" alt="Two" title="Two" /></a></li>
+				<li><a href='<s:url namespace="/" action="index"/>'><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide.png" alt="Three" title="Three" /></a></li>
+				<li><a href='<s:url namespace="/" action="index"/>'><img   src="<%=request.getContextPath() %>/images/bay/suncheon-bay-wide2.png" alt="Four" title="Four" /></a></li>
 			</ul>
 		</div>
 		<div style="float: right; width: 210px; margin: 0pt 0pt 1em 2em;">
@@ -85,7 +76,7 @@
       
 		</div>
 		<div id="content">
-		<decorator:body />
+		<sitemesh:write property="body" />
 		</div><!--/content-->
 	
 		<br class="clear:both"/>

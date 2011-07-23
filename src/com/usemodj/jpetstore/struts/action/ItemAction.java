@@ -1,4 +1,4 @@
-package com.usemodj.jpetstore.struts.action;
+package com.usemodj.jpetstore.struts.action; 
 
 import java.util.List;
 
