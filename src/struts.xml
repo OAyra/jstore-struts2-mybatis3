@@ -5,8 +5,8 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" />
-
+	<constant name="struts.action.extension" value="action,,"/>
+	
     <package name="default" namespace="/" extends="struts-default">
 		<!-- setup the default-stack exception mapping interceptor 
  		so that any exceptions not caught by this application 
@@ -16,7 +16,8 @@
   	 		<interceptor-stack name="appDefault">
   	        	 <interceptor-ref name="defaultStack">
   	      			<param name="exception.logEnabled">true</param>
-  	      			<param name="exception.logLevel">ERROR</param>
+  	      			<!-- <param name="exception.logLevel">ERROR</param> -->
+  	      			<param name="exception.logLevel">DEBUG</param>
   	   			</interceptor-ref>
   	 	    </interceptor-stack>
   		</interceptors>
@@ -44,8 +45,8 @@
 	    </action>
 	    <action name="logout" class="com.usemodj.jpetstore.struts.action.LogoutAction" method="execute">
 	        <result name="input">/signon/login.jsp</result>
-					<result name="redirect" type="redirect">${url}</result>
-	    		<result name="success" type="redirectAction">login_input</result>
+			<result name="redirect" type="redirect">${url}</result>
+	    	<result name="success" type="redirectAction">login_input</result>
 	    </action>
 	    
       <action name="signon_*" class="com.usemodj.jpetstore.struts.action.EditSignonAction" method="{1}">

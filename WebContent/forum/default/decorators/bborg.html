@@ -1,0 +1,850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>bbPress Support Forums</title>
+<link rel="stylesheet" href="http://bbpress.org/common-theme/960/reset.css"
+	type="text/css" />
+<link rel="stylesheet" href="http://bbpress.org/common-theme/960/text.css" type="text/css" />
+<link rel="stylesheet" href="http://bbpress.org/common-theme/960/960.css" type="text/css" />
+<link rel="stylesheet"
+	href="http://bbpress.org/forum-theme/bborg/style.css" type="text/css" />
+
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Recent Posts"
+	href="http://bbpress.org/forums/rss/" />
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Recent Topics"
+	href="http://bbpress.org/forums/rss/topics" />
+<meta name="generator" content="bbPress 1.1-alpha-2855" />
+<script type='text/javascript'
+	src='http://bbpress.org/forums/bb-includes/js/jquery/jquery.js?ver=1.4.2'></script>
+</head>
+<body id="front-page">
+	<div id="bborg-banner-container">
+		<div id="bborg-banner" role="banner" class="container_12">
+			<div class="grid_3">
+				<h1 id="bborg-title">
+					<a href="/">bbPress</a>
+				</h1>
+			</div>
+
+			<div class="grid_9">
+				<ul id="bborg-nav">
+					<li><a href="/">Home</a>
+					</li>
+					<li><a href="/plugins/">Plugins</a>
+					</li>
+					<li><a href="/about/">About</a>
+					</li>
+					<li><a href="/documentation/">Docs</a>
+					</li>
+					<li><a href="/blog/">Blog</a>
+					</li>
+
+					<li><a class="current" href="/forums/">Forums</a>
+					</li>
+					<li><a class="download" href="/download/">Download</a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div id="bborg-login-container">
+		<div class="container_12">
+			<h2>Forums</h2>
+			<div id="bborg-login">
+				<form method="post" action="http://bbpress.org/forums/bb-login.php">
+					<fieldset>
+						<input name="re" type="hidden" value="" /> <input type="hidden"
+							name="_wp_http_referer" value="/forums/" /> <label
+							for="bborg-login-username">Username</label> <input
+							id="bborg-login-username" name="user_login" type="text"
+							title="Username" maxlength="40" tabindex="1" value="username" />
+						<label for="bborg-login-password">Password</label> <input
+							id="bborg-login-password" name="password" type="password"
+							title="Password" maxlength="40" tabindex="2" value="password" />
+						<label for="bborg-login-remember">Remember me</label> <input
+							id="bborg-login-remember" name="remember" type="checkbox"
+							title="Remember me for 2 weeks" tabindex="3" value="1" /> <input
+							name="log_in" type="submit" tabindex="4" value="Log In" /> <a
+							href="http://bbpress.org/forums/register.php" class="button">Join</a>
+
+						<script type="text/javascript" charset="utf-8">
+							var login_username = document
+									.getElementById('bborg-login-username');
+							login_username.onfocus = function(e) {
+								if (e.srcElement.value === 'username') {
+									e.srcElement.value = '';
+								}
+							}
+							login_username.onblur = function(e) {
+								if (e.srcElement.value === '') {
+									e.srcElement.value = 'username';
+								}
+							}
+							var login_password = document
+									.getElementById('bborg-login-password');
+							login_password.onfocus = function(e) {
+								if (e.srcElement.value === 'password') {
+									e.srcElement.value = '';
+								}
+							}
+							login_password.onblur = function(e) {
+								if (e.srcElement.value === '') {
+									e.srcElement.value = 'password';
+								}
+							}
+						</script>
+					</fieldset>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	
+	<div role="main" class="container_12">
+		<div class="grid_4">
+
+			<div id="bborg-forums">
+				<h2>Forums</h2>
+				<table>
+					<thead>
+						<tr>
+							<th class="forum "></th>
+							<th class="num end">Topics</th>
+						</tr>
+
+					</thead>
+					<tbody>
+						<tr class="bb-precedes-sibling bb-root">
+							<td><a href="http://bbpress.org/forums/forum/installation">Installation
+									<div>Getting it up and running</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/installation">2,385</a>
+							</td>
+
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root alt">
+							<td><a
+								href="http://bbpress.org/forums/forum/troubleshooting">Troubleshooting
+									<div>Fixing it when it's broke</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/troubleshooting">2,996</a>
+							</td>
+						</tr>
+
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root">
+							<td><a href="http://bbpress.org/forums/forum/templates">Themes
+									<div>Making it look purtee</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/templates">834</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root alt">
+
+							<td><a href="http://bbpress.org/forums/forum/plugins">Plugins
+									<div>Making it do what it ain't supposed to</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/plugins">1,274</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root">
+							<td><a
+								href="http://bbpress.org/forums/forum/requests-and-feedback">Requests
+									and Feedback
+									<div>Tell us what you're thinking</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/requests-and-feedback">978</a>
+							</td>
+						</tr>
+						<tr class="bb-last-child bb-follows-sibling bb-root alt">
+							<td><a
+								href="http://bbpress.org/forums/forum/pimp-your-press">Pimp
+									your Press
+									<div>A place to show off how awesome you and bbPress are</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/pimp-your-press">314</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			
+			<div id="bborg-simple-search">
+				<form role="search" action="http://bbpress.org/forums/search.php"
+					method="get">
+
+					<fieldset>
+						<label for="bborg-simple-search-input">Search</label> <input
+							id="bborg-simple-search-input" name="q" type="search"
+							autosave="bbpress-org-forums" results="10" maxlength="100" /> <input
+							type="submit" value="Search" />
+					</fieldset>
+				</form>
+			</div>
+			
+			
+			<div id="bborg-hottags">
+				<h2>Hot Tags</h2>
+
+				<p>
+					<a href='http://bbpress.org/forums/tags/404' title='92 topics'
+						rel='tag' style='font-size: 8.3pt;'>404</a> <a
+						href='http://bbpress.org/forums/tags/admin' title='137 topics'
+						rel='tag' style='font-size: 8.8pt;'>admin</a> <a
+						href='http://bbpress.org/forums/tags/akismet' title='69 topics'
+						rel='tag' style='font-size: 8pt;'>akismet</a> <a
+						href='http://bbpress.org/forums/tags/alpha' title='78 topics'
+						rel='tag' style='font-size: 8.1pt;'>alpha</a> <a
+						href='http://bbpress.org/forums/tags/avatar' title='98 topics'
+						rel='tag' style='font-size: 8.4pt;'>avatar</a> <a
+						href='http://bbpress.org/forums/tags/bbpress' title='406 topics'
+						rel='tag' style='font-size: 12.2pt;'>bbPress</a> <a
+						href='http://bbpress.org/forums/tags/buddypress'
+						title='172 topics' rel='tag' style='font-size: 9.3pt;'>buddypress</a>
+					<a href='http://bbpress.org/forums/tags/cookies' title='118 topics'
+						rel='tag' style='font-size: 8.6pt;'>cookies</a> <a
+						href='http://bbpress.org/forums/tags/css' title='201 topics'
+						rel='tag' style='font-size: 9.6pt;'>css</a> <a
+						href='http://bbpress.org/forums/tags/database' title='93 topics'
+						rel='tag' style='font-size: 8.3pt;'>database</a> <a
+						href='http://bbpress.org/forums/tags/email' title='93 topics'
+						rel='tag' style='font-size: 8.3pt;'>email</a> <a
+						href='http://bbpress.org/forums/tags/error' title='177 topics'
+						rel='tag' style='font-size: 9.3pt;'>error</a> <a
+						href='http://bbpress.org/forums/tags/forum' title='123 topics'
+						rel='tag' style='font-size: 8.7pt;'>Forum</a> <a
+						href='http://bbpress.org/forums/tags/help' title='75 topics'
+						rel='tag' style='font-size: 8.1pt;'>help</a> <a
+						href='http://bbpress.org/forums/tags/htaccess' title='68 topics'
+						rel='tag' style='font-size: 8pt;'>htaccess</a> <a
+						href='http://bbpress.org/forums/tags/i18n' title='99 topics'
+						rel='tag' style='font-size: 8.4pt;'>i18n</a> <a
+						href='http://bbpress.org/forums/tags/install' title='102 topics'
+						rel='tag' style='font-size: 8.4pt;'>install</a> <a
+						href='http://bbpress.org/forums/tags/installation'
+						title='193 topics' rel='tag' style='font-size: 9.5pt;'>installation</a>
+					<a href='http://bbpress.org/forums/tags/integration'
+						title='1206 topics' rel='tag' style='font-size: 22pt;'>integration</a>
+					<a href='http://bbpress.org/forums/tags/keymaster'
+						title='72 topics' rel='tag' style='font-size: 8pt;'>keymaster</a>
+					<a href='http://bbpress.org/forums/tags/login' title='203 topics'
+						rel='tag' style='font-size: 9.7pt;'>login</a> <a
+						href='http://bbpress.org/forums/tags/permalinks'
+						title='120 topics' rel='tag' style='font-size: 8.6pt;'>Permalinks</a>
+					<a href='http://bbpress.org/forums/tags/phpbb' title='81 topics'
+						rel='tag' style='font-size: 8.2pt;'>phpBB</a> <a
+						href='http://bbpress.org/forums/tags/plugin' title='1027 topics'
+						rel='tag' style='font-size: 19.8pt;'>plugin</a> <a
+						href='http://bbpress.org/forums/tags/plugins' title='136 topics'
+						rel='tag' style='font-size: 8.8pt;'>plugins</a> <a
+						href='http://bbpress.org/forums/tags/problem' title='78 topics'
+						rel='tag' style='font-size: 8.1pt;'>problem</a> <a
+						href='http://bbpress.org/forums/tags/profile' title='124 topics'
+						rel='tag' style='font-size: 8.7pt;'>profile</a> <a
+						href='http://bbpress.org/forums/tags/registration'
+						title='117 topics' rel='tag' style='font-size: 8.6pt;'>registration</a>
+					<a href='http://bbpress.org/forums/tags/rss' title='94 topics'
+						rel='tag' style='font-size: 8.3pt;'>RSS</a> <a
+						href='http://bbpress.org/forums/tags/spam' title='82 topics'
+						rel='tag' style='font-size: 8.2pt;'>spam</a> <a
+						href='http://bbpress.org/forums/tags/tags' title='132 topics'
+						rel='tag' style='font-size: 8.8pt;'>tags</a> <a
+						href='http://bbpress.org/forums/tags/template' title='159 topics'
+						rel='tag' style='font-size: 9.1pt;'>template</a> <a
+						href='http://bbpress.org/forums/tags/theme' title='186 topics'
+						rel='tag' style='font-size: 9.5pt;'>theme</a> <a
+						href='http://bbpress.org/forums/tags/themes' title='109 topics'
+						rel='tag' style='font-size: 8.5pt;'>themes</a> <a
+						href='http://bbpress.org/forums/tags/translation'
+						title='81 topics' rel='tag' style='font-size: 8.2pt;'>translation</a>
+
+					<a href='http://bbpress.org/forums/tags/upgrade' title='73 topics'
+						rel='tag' style='font-size: 8.1pt;'>upgrade</a> <a
+						href='http://bbpress.org/forums/tags/user' title='70 topics'
+						rel='tag' style='font-size: 8pt;'>user</a> <a
+						href='http://bbpress.org/forums/tags/users' title='76 topics'
+						rel='tag' style='font-size: 8.1pt;'>users</a> <a
+						href='http://bbpress.org/forums/tags/wordpress' title='449 topics'
+						rel='tag' style='font-size: 12.7pt;'>WordPress</a> <a
+						href='http://bbpress.org/forums/tags/wpmu' title='201 topics'
+						rel='tag' style='font-size: 9.6pt;'>wpmu</a>
+				</p>
+			</div>
+			
+			<div id="bborg-feeds">
+				<ul>
+					<li><a href="http://bbpress.org/forums/rss/">All Recent
+							Posts</a>
+					</li>
+
+					<li><a href="http://bbpress.org/forums/rss/topics">All
+							Recent Topics</a>
+					</li>
+				</ul>
+			</div>
+		</div><!-- id=grid_4 -->
+		
+		
+		
+		<div class="grid_8">
+			<div id="bborg-discussions">
+				<h2>
+					Topics<span> &#8212; <a
+						href="http://bbpress.org/forums/bb-login.php?redirect_to=http://bbpress.org/forums/?new=1"
+						class="new-topic">start new</a> </span>
+				</h2>
+
+				<table>
+					<thead>
+						<tr>
+							<th class="topic"></th>
+							<th class="num">Posts</th>
+							<th class="num">Voices</th>
+							<th class="date end">Last Post</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="sticky super-sticky">
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-plugin-updates">bbPress
+									2.0 - Updates</a>
+								<div>
+									<span>[sticky] </span> <span class="topic-pages"><abbr
+										title="Pages">p.</abbr> <a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/2"
+										title="Page 2">2</a><a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/3"
+										title="Page 3">3</a><span class="page-numbers dots">&hellip;</span><a
+										class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/36"
+										title="Page 36">36</a><a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/37"
+										title="Page 37">37</a><a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/38"
+										title="Page 38">38</a>
+									</span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-plugin-updates">1115</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-plugin-updates">196</a>
+							</td>
+
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-plugin-updates/page/38#post-91064">14
+									hours</a>
+								<div>pavelevap</div></td>
+						</tr>
+						<tr class="sticky super-sticky alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-20-shortcodes">bbPress
+									2.0 - Shortcodes</a>
+
+								<div>
+									<span>[sticky] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-shortcodes">11</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-shortcodes">10</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-shortcodes#post-91043">1
+									day</a>
+								<div>Krispulo2000</div></td>
+						</tr>
+						<tr class="sticky super-sticky">
+							<td><a href="http://bbpress.org/forums/topic/bbpress-20-faq">bbPress
+									2.0 - FAQ</a>
+
+								<div>
+									<span>[sticky] </span> <span class="topic-pages"><abbr
+										title="Pages">p.</abbr> <a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-20-faq/page/2"
+										title="Page 2">2</a>
+									</span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-faq">48</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-faq">27</a>
+							</td>
+
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-faq/page/2#post-91042">1
+									day</a>
+								<div>kimijye</div></td>
+						</tr>
+						<tr class="sticky super-sticky alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-20-theme-compatibility">bbPress
+									2.0 - Theme Compatibility</a>
+
+								<div>
+									<span>[sticky] </span> <span class="topic-pages"><abbr
+										title="Pages">p.</abbr> <a class="page-numbers"
+										href="http://bbpress.org/forums/topic/bbpress-20-theme-compatibility/page/2"
+										title="Page 2">2</a>
+									</span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-theme-compatibility">41</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-theme-compatibility">24</a>
+							</td>
+
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-20-theme-compatibility/page/2#post-91038">1
+									day</a>
+								<div>theurbantwist</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/forumstopics-page">forums/topics
+									page</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/forumstopics-page">1</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/forumstopics-page">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/forumstopics-page#post-91101">6
+									minutes</a>
+								<div>spixy</div></td>
+						</tr>
+						<tr class="alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/cannot-access-admin">Cannot
+									access admin</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/cannot-access-admin">4</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/cannot-access-admin">2</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/cannot-access-admin#post-91100">8
+									minutes</a>
+								<div>dooo0</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/newbie-with-bb-install-questions">Newbie
+									with bb install questions</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/newbie-with-bb-install-questions">6</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/newbie-with-bb-install-questions">4</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/newbie-with-bb-install-questions#post-91097">4
+									hours</a>
+								<div>Anthony</div></td>
+						</tr>
+						<tr class="alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/logout-error-when-bbpress-plugin-is-active">Logout
+									error when bbPress plugin is active</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/logout-error-when-bbpress-plugin-is-active">3</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/logout-error-when-bbpress-plugin-is-active">3</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/logout-error-when-bbpress-plugin-is-active#post-91095">4
+									hours</a>
+								<div>John James Jacoby</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/problem-with-direct-subforum-page-links">Problem
+									with direct topic page links</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/problem-with-direct-subforum-page-links">7</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/problem-with-direct-subforum-page-links">5</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/problem-with-direct-subforum-page-links#post-91094">4
+									hours</a>
+								<div>John James Jacoby</div></td>
+						</tr>
+						<tr class="alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-multiforum-on-a-single-site">bbPress
+									multiforum on a single site</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-multiforum-on-a-single-site">2</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-multiforum-on-a-single-site">2</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-multiforum-on-a-single-site#post-91093">4
+									hours</a>
+								<div>John James Jacoby</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/need-a-custom-permalink-rule">Need
+									a custom permalink rule</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/need-a-custom-permalink-rule">6</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/need-a-custom-permalink-rule">4</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/need-a-custom-permalink-rule#post-91092">4
+									hours</a>
+								<div>John James Jacoby</div></td>
+						</tr>
+						<tr class="alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-highlight">bbpress
+									highlight?</a>
+
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-highlight">1</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-highlight">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-highlight#post-91087">6
+									hours</a>
+								<div>Dupont77</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/skeleton-a-responsive-wpbbpress-theme">Skeleton
+									- A Responsive WP/bbPress Theme</a>
+
+								<div>
+									<span></span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/skeleton-a-responsive-wpbbpress-theme">11</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/skeleton-a-responsive-wpbbpress-theme">6</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/skeleton-a-responsive-wpbbpress-theme#post-91085">6
+									hours</a>
+
+								<div>theurbantwist</div></td>
+						</tr>
+						<tr class="alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/how-to-make-bbpress-invite-only-or-private-with-confirmation-needed">How
+									to make bbPress invite only, or private with confirmation
+									needed</a>
+								<div>
+									<span>[not resolved] </span>
+
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/how-to-make-bbpress-invite-only-or-private-with-confirmation-needed">2</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/how-to-make-bbpress-invite-only-or-private-with-confirmation-needed">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/how-to-make-bbpress-invite-only-or-private-with-confirmation-needed#post-91081">9
+									hours</a>
+								<div>Lori Anderson</div></td>
+						</tr>
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/bbpress-2-rc3-change-language">BBpress
+									2 rc3 change language?</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-2-rc3-change-language">5</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-2-rc3-change-language">2</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-2-rc3-change-language#post-91076">10
+									hours</a>
+								<div>Gustav820</div></td>
+
+						</tr>
+						<tr class="resolved alt">
+							<td><a
+								href="http://bbpress.org/forums/topic/prevent-spam-when-unregistered-users-are-allowed-to-post">[resolved]
+									Prevent spam when unregistered users are allowed to post</a>
+								<div>
+									<span>[resolved] </span>
+								</div></td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/prevent-spam-when-unregistered-users-are-allowed-to-post">19</a>
+							</td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/prevent-spam-when-unregistered-users-are-allowed-to-post">6</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/prevent-spam-when-unregistered-users-are-allowed-to-post#post-91075">10
+									hours</a>
+								<div>EddieG</div></td>
+						</tr>
+
+						<tr>
+							<td><a
+								href="http://bbpress.org/forums/topic/profiles-changing">Profiles
+									changing</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/profiles-changing">1</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/profiles-changing">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/profiles-changing#post-91074">10
+									hours</a>
+								<div>tylerstrayhan</div></td>
+						</tr>
+						<tr class="alt">
+
+							<td><a
+								href="http://bbpress.org/forums/topic/forums-link-not-working">Forums
+									link not working</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/forums-link-not-working">2</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/forums-link-not-working">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/forums-link-not-working#post-91071">12
+									hours</a>
+								<div>jasonvbox-ua</div></td>
+						</tr>
+						<tr>
+
+							<td><a
+								href="http://bbpress.org/forums/topic/layout-bbpress-as-invision-or-phpbb-or-vbulletin">Layout
+									bbPress as Invision or phpBB or vBulletin</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/layout-bbpress-as-invision-or-phpbb-or-vbulletin">9</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/layout-bbpress-as-invision-or-phpbb-or-vbulletin">4</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/layout-bbpress-as-invision-or-phpbb-or-vbulletin#post-91069">12
+									hours</a>
+								<div>anointed</div></td>
+						</tr>
+						<tr class="alt">
+
+							<td><a
+								href="http://bbpress.org/forums/topic/avatar-upload-how-to-install">Here&#039;s
+									how to install Avatar Upload plugin</a>
+								<div>
+									<span></span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/avatar-upload-how-to-install">18</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/avatar-upload-how-to-install">15</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/avatar-upload-how-to-install#post-91065">14
+									hours</a>
+								<div>ogrody</div></td>
+						</tr>
+						<tr class="resolved">
+
+							<td><a
+								href="http://bbpress.org/forums/topic/quick-question-regarding-customizing-twenty-ten-bbpress-theme">[resolved]
+									Quick question regarding customizing Twenty Ten bbPress theme</a>
+								<div>
+									<span>[resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/quick-question-regarding-customizing-twenty-ten-bbpress-theme">3</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/quick-question-regarding-customizing-twenty-ten-bbpress-theme">2</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/quick-question-regarding-customizing-twenty-ten-bbpress-theme#post-91061">16
+									hours</a>
+								<div>kevinvaughn</div></td>
+						</tr>
+						<tr class="alt">
+
+							<td><a
+								href="http://bbpress.org/forums/topic/need-help-with-install-to-subdomain">Need
+									Help With Install To Subdomain</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/need-help-with-install-to-subdomain">1</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/need-help-with-install-to-subdomain">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/need-help-with-install-to-subdomain#post-91058">17
+									hours</a>
+								<div>LTR Admin</div></td>
+						</tr>
+						<tr class="alt">
+
+							<td><a href="http://bbpress.org/forums/topic/bbpress-2">bbpress
+									2 widget comment and reply with avatar</a>
+								<div>
+									<span>[not resolved] </span>
+								</div></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-2">2</a>
+							</td>
+
+							<td class="num"><a
+								href="http://bbpress.org/forums/topic/bbpress-2">1</a>
+							</td>
+							<td class="date"><a
+								href="http://bbpress.org/forums/topic/bbpress-2#post-90997">2
+									days</a>
+								<div>ineken</div></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+				<div class="nav">
+					<span class="page-numbers current" title="Page 1">1</span><a
+						class="page-numbers" href="/forums/page/2" title="Page 2">2</a><span
+						class="page-numbers dots">&hellip;</span><a class="page-numbers"
+						href="/forums/page/297" title="Page 297">297</a><a
+						class="next page-numbers" href="/forums/page/2" title="Next page">Next
+						&raquo;</a>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+
+	</div><!-- id=main -->
+
+	<div class="clear"></div>
+	<div id="bborg-contentinfo" role="contentinfo" class="container_12">
+		<div id="bborg-extra" class="grid_2">
+			<ul>
+				<li><a href="/about/privacy/">Privacy</a>
+				</li>
+				<li><a href="/about/gpl/"><abbr title="GNU Public License">GPL</abbr>
+				</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="bborg-also" class="grid_8">
+			<h2>See also:</h2>
+			<ul>
+				<li><a href="http://wordpress.org/">WordPress.org</a>
+				</li>
+				<!-- <li><a href="http://wordpress.com/">WordPress.com</a></li> -->
+				<li><a href="http://wordpress.tv/">WordPress.TV</a>
+				</li>
+				<li><a href="http://wordcamp.org/">WordCamp</a>
+				</li>
+
+				<li><a href="http://jobs.wordpress.net/">WP Jobs</a>
+				</li>
+				<li><a href="http://ma.tt/">Matt</a>
+				</li>
+				<li><a
+					href="http://www.facebook.com/pages/bbPress/37285629283/">Fan
+						bbPress on Facebook</a>
+				</li>
+				<li><a href="http://bbpress.org/blog/feed/" class="feed">Blog
+						Feed</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+
+</body>
+</html>

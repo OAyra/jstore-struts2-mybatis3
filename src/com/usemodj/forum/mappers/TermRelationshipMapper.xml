@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.TermRelationshipMapper">
+	<cache/>
+	<select id="selectObjectIds" resultType="long">
+		SELECT tr.object_id 
+		FROM bb_term_relationships AS tr 
+			INNER JOIN bb_term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id 
+		<where>
+			tt.taxonomy IN
+		    <foreach item="taxonomy"  index="index" collection="taxonomies"
+		    open="(" separator="," close=")">
+		    #{taxonomy}
+		    </foreach>
+		    <choose>
+		    	<when test="field == 'tt_id'"> 	AND tt.term_taxonomy_id IN 	</when>
+		    	<otherwise>AND tt.term_id IN </otherwise>
+		    </choose>
+		    <foreach item="term"  index="index" collection="terms"
+		    open="(" separator="," close=")">
+		    #{term}
+		    </foreach>
+		<if test="userId > 0">
+			AND tr.user_id = #{userId}
+		</if>
+		</where>
+		ORDER BY tr.object_id 	
+		<choose>
+			<when test="order =='DESC'">DESC</when>
+			<otherwise>ASC</otherwise>
+		</choose> 
+	</select>
+	
+	<select id="selectTermRelationshipIds"  resultType="long">
+		SELECT tr.object_id 
+		FROM bb_term_relationships AS tr 
+			INNER JOIN bb_term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id 
+		<where>
+			tt.taxonomy =#{ taxonomy}
+		    <choose>
+		    	<when test="field == 'tt_id'"> 	AND tt.term_taxonomy_id = #{term} 	</when>
+		    	<otherwise>AND tt.term_id = #{term}  </otherwise>
+		    </choose>
+	  	<if test="userId > 0">
+			AND tr.user_id = #{userId}
+		</if>
+		</where>
+		ORDER BY tr.object_id
+		<choose>
+			<when test="order =='DESC'">DESC</when>
+			<otherwise>ASC</otherwise>
+		</choose> 
+	</select>
+
+</mapper>

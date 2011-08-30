@@ -7,8 +7,10 @@
    <mapping path="/*.special.jsp" decorator="/decorators/special-decorator.html"/>
    
     <!--  forum bbpress -->
-    <mapping path="/forum/*" decorator="/forum/default/decorators/front-decorator.jsp"/>
+    <mapping path="/forum/forum*" decorator="/forum/default/decorators/forum-decorator.jsp"/>
+    <mapping path="topic*" decorator="/forum/default/decorators/forum-decorator.jsp"/>
    <mapping path="/forum/admin/*" decorator="/forum/default/decorators/admin-decorator.jsp"/>
+    <mapping path="/forum/*" decorator="/forum/default/decorators/front-decorator.jsp"/>
 
 
   <!-- Alternative convention. This is more verbose but allows multiple decorators 

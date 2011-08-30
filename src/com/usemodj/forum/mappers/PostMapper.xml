@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.PostMapper">
+	<cache/>
+<select id="selectFoundRows" resultType="long">
+	SELECT FOUND_ROWS() AS cnt
+</select>
+
+<select id="selectPosts"  resultType="Post">
+	SELECT DISTINCT SQL_CALC_FOUND_ROWS
+		post_id       AS postId      ,   
+		forum_id      AS forumId     ,    
+		topic_id      AS topicId     ,    
+		poster_id     AS posterId    ,    
+		post_text     AS postText    ,  
+		post_time     AS postTime    ,    
+		poster_ip     AS posterIp    ,    
+		post_status   AS postStatus  ,    
+		post_position AS postPosition   
+	FROM bb_posts
+	<where>
+		topic_id = #{topicId} 
+		<if test="view != 'all'">AND post_status = 0</if>
+	</where>
+	ORDER BY post_time ASC
+</select>
+<select id="selectTopicVoices" resultType="int"	>
+	SELECT count(DISTINCT poster_id) 
+	FROM bb_posts
+	WHERE  topic_id = #{topicId} AND post_status = 0
+</select>
+</mapper>

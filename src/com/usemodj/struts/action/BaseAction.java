@@ -15,6 +15,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.usemodj.forum.Location;
 import com.usemodj.forum.mybatis.builder.ForumMybatisConfig;
 import com.usemodj.mybatis.builder.MybatisConfig;
 import com.usemodj.struts.Constants;
@@ -163,4 +164,15 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	public ServletContext getServletContext(){
 		return this.context;
 	}
+	
+	Location location;
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
 }

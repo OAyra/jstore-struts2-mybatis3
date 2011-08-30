@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.TermMapper">
+	<cache/>
+	<resultMap id="joinedTermTaxonomy" type="com.usemodj.forum.domain.TermTaxonomy">
+		<id	property="termTaxonomyId" column="tt_term_taxonomy_id"/>
+		<result property="termId"         column="tt_term_id"         />
+		<result property="taxonomy"       column="tt_taxonomy"        />
+		<result property="description"    column="tt_description"     />
+		<result property="parent"         column="tt_parent"          />
+		<result property="count"          column="tt_count"           />
+	</resultMap>
+  
+	<resultMap id="termJoinedWithTermTaxonomy" type="com.usemodj.forum.domain.Term">
+		<id property="termId"   	column="term_id"   />
+		<result property="name"    	column="name"      />
+		<result property="slug"    	column="slug"      />
+		<result property="termGroup"	column="term_group"/>
+		<association property="tt" column="tt_term_taxonomy_id" resultMap="joinedTermTaxonomy"/>
+	</resultMap>
+  	<select id="selectTermJoinedWithTermTaxonomy"  resultMap="termJoinedWithTermTaxonomy">
+  	SELECT 
+		t.term_id    AS term_id ,  
+		t.name       AS name   , 
+		t.slug       AS slug   , 
+		t.term_group AS term_group,
+		tt.term_taxonomy_id AS tt_term_taxonomy_id,
+		tt.term_id          AS tt_term_id        ,
+		tt.taxonomy         AS tt_taxonomy      ,
+		tt.description      AS tt_description   ,
+		tt.parent           AS tt_parent        ,
+		tt.count            AS tt_count         
+		FROM bb_terms AS t INNER JOIN bb_term_taxonomy AS tt ON t.term_id = tt.term_id 
+		WHERE tt.taxonomy IN (#{taxonomy}) AND tt.count > 0 
+		ORDER BY tt.count DESC 
+		LIMIT #{number};
+	</select>
+	
+	<select id="selectTermBy"  resultMap="termJoinedWithTermTaxonomy">
+  	SELECT 
+		t.term_id    AS term_id ,  
+		t.name       AS name   , 
+		t.slug       AS slug   , 
+		t.term_group AS term_group,
+		tt.term_taxonomy_id AS tt_term_taxonomy_id,
+		tt.term_id          AS tt_term_id        ,
+		tt.taxonomy         AS tt_taxonomy      ,
+		tt.description      AS tt_description   ,
+		tt.parent           AS tt_parent        ,
+		tt.count            AS tt_count         
+		FROM bb_terms AS t INNER JOIN bb_term_taxonomy AS tt ON t.term_id = tt.term_id 
+		WHERE tt.taxonomy =#{taxonomy} 
+	<choose>
+		<when test="field == 'slug'">
+			AND t.slug = #{value}
+		</when>
+		<when test="field == 'name'">
+			AND t.name = #{value}
+		</when>
+		<when test="field == 'tt_id'">
+			AND tt.term_taxonomy_id = #{value}
+		</when>
+		<otherwise>
+			AND t.term_id = #{value}
+		</otherwise>
+	</choose>
+		LIMIT 1;
+	</select>
+</mapper>

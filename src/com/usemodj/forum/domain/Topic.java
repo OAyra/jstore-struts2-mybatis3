@@ -2,6 +2,8 @@ package com.usemodj.forum.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *  Table bb_topics
@@ -47,10 +49,15 @@ public class Topic implements Serializable {
 	long  topicPosts      	; // bigint(20)
 	long  tagCount        	; // bigint(20)
 	
+	Map metas = new HashMap();
+	
 	public Topic() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getVoicesCount(){
+		return getMetaValue("voices_count");
+	}
 	public long getTopicId() {
 		return topicId;
 	}
@@ -179,8 +186,11 @@ public class Topic implements Serializable {
 		this.tagCount = tagCount;
 	}
 
-	// Setter / Getter
-
-	
+	public void setMetaValue(String metaKey, String metaValue) {
+		this.metas.put(metaKey, metaValue);
+	}
+	public String getMetaValue( String metaKey) {
+		return (String) this.metas.get(metaKey);
+	}
 	
 }

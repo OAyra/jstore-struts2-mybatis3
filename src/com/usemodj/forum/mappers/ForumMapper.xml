@@ -4,7 +4,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.usemodj.forum.mappers.ForumMapper">
-  <select id="selectForums"   resultType="Forum">
+	<cache/>
+<!-- <cache type="org.mybatis.caches.hazelcast.HazelcastCache"/> -->
+<!--  <cache type="org.mybatis.caches.hazelcast.LoggingHazelcastCache"/> -->
+<!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+<!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+  <select id="selectForumsWithLimit"   resultType="Forum">
 	SELECT SQL_CALC_FOUND_ROWS
 		 forum_id      AS forumId    ,
 		 forum_name    AS forumName  ,
@@ -21,6 +27,35 @@
   <select id="selectFoundRows"  resultType="long">
   	SELECT FOUND_ROWS() AS cnt 
   </select>
+  
+  <select id="selectForums"   resultType="Forum">
+	SELECT SQL_CALC_FOUND_ROWS
+		 forum_id      AS forumId    ,
+		 forum_name    AS forumName  ,
+		 forum_slug    AS forumSlug  ,
+		 forum_desc    AS forumDesc  ,
+		 forum_parent  AS forumParent,
+		 forum_order   AS forumOrder ,
+		 topics        AS topics     ,
+		 posts         AS posts      
+	FROM bb_forums
+	ORDER BY forum_order
+  </select>
+  <select id="selectForum"  resultType="Forum">
+  	SELECT 
+		 forum_id      AS forumId    ,
+		 forum_name    AS forumName  ,
+		 forum_slug    AS forumSlug  ,
+		 forum_desc    AS forumDesc  ,
+		 forum_parent  AS forumParent,
+		 forum_order   AS forumOrder ,
+		 topics        AS topics     ,
+		 posts         AS posts      
+	FROM bb_forums
+	WHERE forum_id = #{forumId}
+
+  </select>
+  
 <delete id="deleteForumIN">
     DELETE FROM bb_forums 
     WHERE forum_id IN

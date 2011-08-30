@@ -2,17 +2,19 @@ package com.usemodj.forum;
 
 
 public enum Location {
-	FRONT((short)1),
-	FORUM((short)2),
-	VIEW((short)3);
+	FRONT(1),
+	FORUM(2),
+	TOPIC(4),
+	VIEW(8),
+	TAG(16);
 	
-	private short num;
+	private int num;
 	
-	Location(short num) {
+	Location(int  num) {
 		this.num = num;
 	}
 	
-	public short getNum(){
+	public int getNum(){
 		return num;
 	}
 }

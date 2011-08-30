@@ -1,6 +1,8 @@
 package com.usemodj.forum.domain;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Table bb_forums
@@ -31,7 +33,8 @@ public class Forum implements Serializable {
 	int	forumOrder  ;	//  int(10)
 	long  	topics      ;	//   bigint(20)
 	long  	posts       ;	//   bigint(20)  * 
-
+	Meta meta = null;
+	Map metas = new HashMap();
 	
 	public Forum(){
 		
@@ -41,6 +44,8 @@ public class Forum implements Serializable {
 		this.forumId = forumId;
 	}
 
+	// Setters /Getters methods
+	
 	public int getForumId() {
 		return forumId;
 	}
@@ -104,8 +109,27 @@ public class Forum implements Serializable {
 	public void setPosts(long posts) {
 		this.posts = posts;
 	}
+
+	public Meta getMeta() {
+		return meta;
+	}
+
+	public void setMeta(Meta meta) {
+		this.meta = meta;
+	}
 	
-	// Setters /Getters methods
+	public void setMetaValue(String metaKey, String metaValue) {
+		this.metas.put(metaKey, metaValue);
+	}
+	public String getMetaValue( String metaKey) {
+		return (String) this.metas.get(metaKey);
+	}
 	
-	
+	public int getForumIsCategory(){
+		try {
+			return Integer.parseInt( getMetaValue("forum_is_category"));
+		} catch (NumberFormatException e) {
+			return 0;
+		}
+	}
 }

@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.usemodj.forum.mappers.TopicMapper">
+	<cache/>
 <select id="selectFoundRows" resultType="long">
 	SELECT FOUND_ROWS() AS cnt
 </select>
@@ -26,7 +27,7 @@
 		topic_posts      	AS topicPosts      	 ,
 		tag_count        	AS tagCount        	  
 	FROM bb_topics
-	WHERE  topic_status = '0'
+	WHERE  topic_status = 0
 	<!-- LIMIT #{offset}, #{limit}  -->
   </select>
   <!--  $q['open']:  'no' => 0, 'closed' => 0, 'yes' => 1, 'open' => 1 -->
@@ -49,14 +50,12 @@
 		t.topic_last_post_id 	AS topicLastPostId 	 ,
 		t.topic_sticky     	AS topicSticky     	 ,
 		t.topic_posts      	AS topicPosts      	 ,
-		t.tag_count        	AS tagCount       ,
-		MAX(p.post_id) as postId 	  
+		t.tag_count        	AS tagCount      
 	FROM bb_topics AS t	USE INDEX (forum_time)
-	JOIN bb_posts AS p ON(t.topic_id = p.topic_id)
 	<where> 
-	 	t.topic_status = '0' 	<!--   'normal' => 0, 'deleted' => 1 -->
+	 	t.topic_status = 0 	<!--   'normal' => 0, 'deleted' => 1 -->
 	 <if test="location == 1"> AND t.topic_sticky != 2</if> <!-- FRONT => 1, FORUM =>2, VIEW => 3 -->
-	 <if test="location == 2 or location == 3"> AND t.topic_sticky == 0</if>
+	 <if test="location == 2 or location == 3"> AND t.topic_sticky = 0</if>
 	  <if test="forumId > 0"> AND t.forum_id = #{forumId} </if>
 	 </where> 
 	GROUP BY t.topic_id
@@ -83,12 +82,10 @@
 		t.topic_last_post_id 	AS topicLastPostId 	 ,
 		t.topic_sticky     	AS topicSticky     	 ,
 		t.topic_posts      	AS topicPosts      	 ,
-		t.tag_count        	AS tagCount       ,
-		MAX(p.post_id) as postId 	  
+		t.tag_count        	AS tagCount      
 	FROM bb_topics AS t	USE INDEX (forum_time)
-	JOIN bb_posts AS p ON(t.topic_id = p.topic_id)
 	<where> 
-	 	t.topic_status = '0' 	<!--   'normal' => 0, 'deleted' => 1 -->
+	 	t.topic_status = 0 	<!--   'normal' => 0, 'deleted' => 1 -->
 	 <if test="forumId == -1"> AND t.topic_sticky = 2</if>
 	  <if test="forumId > 0"> AND t.forum_id = #{forumId} AND t.topic_sticky != 0</if>
 	 </where> 
@@ -96,12 +93,64 @@
 	ORDER BY t.topic_time DESC
 	<!-- LIMIT #{offset}, #{limit}  -->
   </select>
-  
+
+  <select id="selectTopic"   resultType="Topic">
+	SELECT  
+		topic_id         	AS topicId         	 ,
+		topic_title      	AS topicTitle      	 ,
+		topic_slug       	AS topicSlug       	 ,
+		topic_poster     	AS topicPoster     	 ,
+		topic_poster_name 	AS topicPosterName 	 ,
+		topic_last_poster 	AS topicLastPoster 	 ,
+		topic_last_poster_name 	AS topicLastPosterName ,
+		topic_start_time 	AS topicStartTime 	 ,
+		topic_time       	AS topicTime       	 ,
+		forum_id         	AS forumId         	 ,
+		topic_status     	AS topicStatus     	 ,
+		topic_open       	AS topicOpen       	 ,
+		topic_last_post_id 	AS topicLastPostId 	 ,
+		topic_sticky     	AS topicSticky     	 ,
+		topic_posts      	AS topicPosts      	 ,
+		tag_count        	AS tagCount        	  
+	FROM bb_topics
+	WHERE  topic_id = #{topicId} AND  topic_status = 0 
+</select>
+
+ <select id="selectTaggedTopics"   resultType="Topic">
+	SELECT  SQL_CALC_FOUND_ROWS
+		topic_id         	AS topicId         	 ,
+		topic_title      	AS topicTitle      	 ,
+		topic_slug       	AS topicSlug       	 ,
+		topic_poster     	AS topicPoster     	 ,
+		topic_poster_name 	AS topicPosterName 	 ,
+		topic_last_poster 	AS topicLastPoster 	 ,
+		topic_last_poster_name 	AS topicLastPosterName ,
+		topic_start_time 	AS topicStartTime 	 ,
+		topic_time       	AS topicTime       	 ,
+		forum_id         	AS forumId         	 ,
+		topic_status     	AS topicStatus     	 ,
+		topic_open       	AS topicOpen       	 ,
+		topic_last_post_id 	AS topicLastPostId 	 ,
+		topic_sticky     	AS topicSticky     	 ,
+		topic_posts      	AS topicPosts      	 ,
+		tag_count        	AS tagCount        	  
+	FROM bb_topics
+	WHERE   topic_status = 0 
+	<if test="taggedTopicIds != null">
+	 AND topic_id IN
+    <foreach item="item" index="index" collection="taggedTopicIds"
+   		 open="("  separator=","  close=")"> #{item} </foreach>
+	</if>
+	ORDER BY topic_time DESC
+	LIMIT #{offset}, #{limit}
+</select>
+
+   
 <delete id="deleteTopicIN">
     DELETE FROM bb_topics 
-    WHEREtopic_id IN
+    WHERE topic_id IN
     <foreach item="item" index="index" collection="array"
-    open="(" separator="," close=")">
+    open="("  separator=","  close=")">
     #{item}
     </foreach>
   </delete>

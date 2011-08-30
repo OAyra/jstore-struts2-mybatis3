@@ -4,18 +4,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title><sitemesh:write property="title"
-		default="JavaPress Forum" />
+<title><sitemesh:write property="title"	default="JavaPress Forum" />
 </title>
-<link
-	href="<%=request.getContextPath()%>/forum/default/decorators/style.css"
+
+<link	href="<%=request.getContextPath()%>/forum/default/decorators/reset.css"
 	rel="stylesheet" type="text/css" />
-<script src="<%=request.getContextPath()%>/scripts/prototype.js"
+<link	href="<%=request.getContextPath()%>/forum/default/decorators/text.css"
+	rel="stylesheet" type="text/css" />
+<link	href="<%=request.getContextPath()%>/forum/default/decorators/960.css"
+	rel="stylesheet" type="text/css" />
+<link	href="<%=request.getContextPath()%>/forum/default/decorators/style.css?ver=20110825"
+	rel="stylesheet" type="text/css	" />
+	
+<script src="<%=request.getContextPath()%>/forum/decorators/jquery/jquery.js?ver=1.2.6"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/scripts/scriptaculous.js"
+<script src="<%=request.getContextPath()%>/forum/decorators/wp-ajax-response.js?ver=20080316"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/scripts/simple-slide-show.js"
+<script src="<%=request.getContextPath()%>/forum/decorators/wp-lists.js?ver=20080826"
 	type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/forum/decorators/jquery/jquery.color.js?ver=2.0-4561"
+	type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/forum/decorators/topic.js?ver=20090602"
+	type="text/javascript"></script>
+	
 <link rel="alternate" type="application/rss+xml"
 	title="JavaPress Forum &raquo; Recent Posts"
 	href="http://usemodj.com/bbpress/rss.php" />

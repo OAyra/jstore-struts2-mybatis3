@@ -24,7 +24,11 @@
 	<!-- forum domain -->
     <typeAlias alias="Forum" 	type="com.usemodj.forum.domain.Forum"/>
     <typeAlias alias="Topic" 	type="com.usemodj.forum.domain.Topic"/>
-   </typeAliases>
+    <typeAlias alias="Meta" 	type="com.usemodj.forum.domain.Meta"/>
+    <typeAlias alias="Post" 	type="com.usemodj.forum.domain.Post"/>
+    <typeAlias alias="Term" 	type="com.usemodj.forum.domain.Term"/>
+    <typeAlias alias="TermTaxonomy" 	type="com.usemodj.forum.domain.TermTaxonomy"/>
+    </typeAliases>
 <!--  
   <typeHandlers>
     <typeHandler javaType="com.usemodj.struts.OrderStep" jdbcType="VARCHAR"
@@ -76,6 +80,10 @@
   	<!-- forum  mapper -->
     <mapper resource="com/usemodj/forum/mappers/ForumMapper.xml"/>      
     <mapper resource="com/usemodj/forum/mappers/TopicMapper.xml"/>        
+    <mapper resource="com/usemodj/forum/mappers/PostMapper.xml"/>        
+    <mapper resource="com/usemodj/forum/mappers/MetaMapper.xml"/>        
+    <mapper resource="com/usemodj/forum/mappers/TermMapper.xml"/>        
+    <mapper resource="com/usemodj/forum/mappers/TermRelationshipMapper.xml"/>        
   </mappers>
 
 </configuration>

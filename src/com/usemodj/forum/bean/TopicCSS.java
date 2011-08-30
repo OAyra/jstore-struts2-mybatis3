@@ -6,8 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.usemodj.forum.Location;
 import com.usemodj.forum.domain.Topic;
 
 /*
@@ -52,24 +55,57 @@ public class TopicCSS {
 		this.topic = topic;
 	}
 
-	public String getTopicClass() {
-		return getTopicClass("topic");
+	public String getTopicClass( String cssClazz,  Location location, boolean isBrowseDeleted) {
+		return getTopicClass(cssClazz, "topic", location, isBrowseDeleted);
 	}
-	
-	public String  getTopicClass( String key) {
-		if( 1 == topic.getTopicStatus() /* && bb_current_user_can( 'browse_deleted' ) */) {
+	public String getTopicClass( String cssClazz,  short location, boolean isBrowseDeleted) {
+		return getTopicClass(cssClazz, "topic", location, isBrowseDeleted);
+	}
+
+	//TODO: getTopicClass: bb_current_user_can( 'browse_deleted' )
+	public String  getTopicClass(String cssClazz,  String key, Location location, boolean isBrowseDeleted) {
+		if( StringUtils.isBlank(cssClazz)) {
+			String[] css = cssClazz.split(" ");
+			for( String c: css) {
+				this.cssClass.add( c);
+			}
+		}
+		if( 1 == topic.getTopicStatus()  && isBrowseDeleted /* && bb_current_user_can( 'browse_deleted' ) */) {
 			cssClass.add("deleted");
-		} else if( 1 < topic.getTopicStatus() /* && bb_current_user_can( 'browse_deleted' ) */) {
+		} else if( 1 < topic.getTopicStatus()  && isBrowseDeleted /* && bb_current_user_can( 'browse_deleted' ) */) {
 			cssClass.add("bozo");
 		}
 		
 		if( 0 == topic.getTopicOpen())
 			cssClass.add("close");
 		
-		if( 1 == topic.getTopicSticky()  /*  && ( bb_is_forum() || bb_is_view() ) */ ) 
+		if( 1 == topic.getTopicSticky() && ( location == Location.FORUM || location == Location.VIEW)   /*  && ( bb_is_forum() || bb_is_view() ) */ ) 
 			cssClass.add( "sticky");
-		else if( 2 == topic.getTopicSticky() /* && ( bb_is_front() || bb_is_forum() ) */)
+		else if( 2 == topic.getTopicSticky()  && ( Location.FRONT.equals(location) || Location.FORUM.equals(location))   /* && ( bb_is_front() || bb_is_forum() ) */)
 			cssClass.add( "sticky super-sticky");
+		
+		return  altClass( key, join( cssClass, " "));
+	}
+	public String  getTopicClass( String cssClazz, String key, short location, boolean isBrowseDeleted) {
+		if( !StringUtils.isBlank( cssClazz)) {
+			String[] css = cssClazz.split(" ");
+			for( String c: css) {
+				this.cssClass.add( c);
+			}
+		}
+		if( 1 == topic.getTopicStatus()  && isBrowseDeleted /* && bb_current_user_can( 'browse_deleted' ) */) {
+			this.cssClass.add("deleted");
+		} else if( 1 < topic.getTopicStatus()  && isBrowseDeleted /* && bb_current_user_can( 'browse_deleted' ) */) {
+			this.cssClass.add("bozo");
+		}
+		
+		if( 0 == topic.getTopicOpen())
+			this.cssClass.add("close");
+		
+		if( 1 == topic.getTopicSticky()  && ( location == Location.FORUM.getNum() || location == Location.VIEW.getNum())    /*  && ( bb_is_forum() || bb_is_view() ) */ ) 
+			this.cssClass.add( "sticky");
+		else if( 2 == topic.getTopicSticky()  && (  location == Location.FRONT.getNum() || location == Location.FORUM.getNum())   /* && ( bb_is_front() || bb_is_forum() ) */)
+			this.cssClass.add( "sticky super-sticky");
 		
 		return  altClass( key, join( cssClass, " "));
 	}
@@ -96,7 +132,10 @@ public class TopicCSS {
 		for( String css: set) {
 			cssBuf.append( separator).append( css);
 		}
-		return cssBuf.toString().trim();
+		String str = cssBuf.toString().trim();
+		if( str.startsWith( separator))
+			str = str.substring(separator.length());
+		return str;
 	}
 	
 	/*
@@ -109,7 +148,8 @@ public class TopicCSS {
 	*
 	 */
 	String getClosedLabel( String label) {
-		if( 0 == topic.getTopicOpen())
+		logger.debug("-- getClosedLabel  topic.getTopicOpen(): " + topic.getTopicOpen() );
+		if( (byte)0 == this.topic.getTopicOpen())
 			return String.format("[closed] %s", label);
 		return label;
 	}
@@ -131,10 +171,10 @@ public class TopicCSS {
 	 */
 	public String getStickyLabel( String label, boolean isFront) {
 		if( isFront) {
-			if( 2 == topic.getTopicSticky())
+			if( 2 ==this. topic.getTopicSticky())
 				return String.format("[sticky] %s", label);
 		} else {
-			if( 1 == topic.getTopicSticky() || 1 == topic.getTopicSticky())
+			if( 1 == this.topic.getTopicSticky() || 2 == this.topic.getTopicSticky())
 				return String.format("[sticky] %s", label);
 		}
 		return label;

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.usemodj.forum.Location;
 import com.usemodj.forum.domain.Topic;
 /*
  * function topic_class( $class = '', $key = 'topic', $id = 0 ) {
@@ -43,7 +44,11 @@ public class TopicCSSTest {
 		//fail("Not yet implemented");
 		topicCSS = new TopicCSS();
 		topicCSS.setTopic(topic);
-		System.out.println("TopicCSS : " +topicCSS.getTopicClass());
+		//Location[] location= {Location.FRONT,Location.FORUM};
+		//System.out.println("TopicCSS : " +topicCSS.getTopicClass( location, true));
+		//System.out.println("TopicCSS : " +topicCSS.getTopicClass(  new Location[] {Location.FRONT,Location.FORUM}, true));
+		System.out.println("TopicCSS front : " +topicCSS.getTopicClass("", Location.FRONT, true));
+		System.out.println("TopicCSS  forum: " +topicCSS.getTopicClass("",  Location.FORUM, true));
 	}
 
 	@Test

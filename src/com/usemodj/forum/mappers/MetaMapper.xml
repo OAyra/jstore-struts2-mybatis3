@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.MetaMapper">
+	<cache/>
+ 	 <select id="selectMetaIN"   resultType="Meta">
+	SELECT 
+		meta_id     AS metaId    ,
+		object_type AS objectType,
+		object_id   AS objectId  ,
+		meta_key    AS metaKey   ,
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = #{objectType}
+ 	AND object_id  IN
+    <foreach item="objectId"  index="index" collection="objectIds"
+    open="(" separator="," close=")">
+    #{objectId}
+    </foreach> 
+ 	</where> 
+	</select>
+	
+ 	 <select id="selectMetaLongArr"   resultType="Meta">
+	SELECT 
+		meta_id     AS metaId    ,
+		object_type AS objectType,
+		object_id   AS objectId  ,
+		meta_key    AS metaKey   ,
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = #{objectType}
+ 	AND object_id  IN
+    <foreach item="objectId"  index="index" collection="objectIds"
+    open="(" separator="," close=")">
+    #{objectId}
+    </foreach>
+ 	</where> 
+	</select>
+
+ 	 <select id="selectMetaINInt"   resultType="Meta">
+	SELECT 
+		meta_id     AS metaId    ,
+		object_type AS objectType,
+		object_id   AS objectId  ,
+		meta_key    AS metaKey   ,
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = #{objectType}
+ 	AND object_id  IN
+    <foreach item="objectId"  index="index" collection="objectIds"
+    open="(" separator="," close=")">
+    #{objectId}
+    </foreach>
+ 	</where> 
+	</select>
+
+  <select id="selectMetas"   resultType="Meta">
+	SELECT 
+		meta_id     AS metaId    ,
+		object_type AS objectType,
+		object_id   AS objectId  ,
+		meta_key    AS metaKey   ,
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = #{objectType}
+ 	AND object_id  = #{objectId}
+ 	</where> 
+	</select>
+  <select id="selectMeta"   resultType="Meta">
+	SELECT 
+		meta_id     AS metaId    ,
+		object_type AS objectType,
+		object_id   AS objectId  ,
+		meta_key    AS metaKey   ,
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = #{objectType}
+ 	AND object_id  = #{objectId}
+ 	AND meta_key = #{metaKey}
+ 	</where> 
+	</select>
+	
+	<select id="selectBBOption"  resultType="string">
+	SELECT 
+		meta_value  AS metaValue 
+	FROM bb_meta
+ 	<where>
+ 	object_type = 'bb_option'
+ 	AND meta_key = #{metaKey}
+ 	</where> 
+	</select>
+	
+	<insert id="insertMeta" parameterType="Meta">
+	INSERT INTO bb_meta ( object_type, object_id, meta_key, meta_value)
+	VALUES ( #{objectType}, #{objectId}, #{metaKey}, #{meta_value})
+	</insert>
+	
+	<update id="updateMeta" parameterType="Meta">
+	UPDATE bb_meta SET meta_value = #{metaValue}
+	WHERE  object_type = #{objectType} AND object_id =  #{objectId}
+		AND meta_key = #{metaKey}
+	</update>
+</mapper>

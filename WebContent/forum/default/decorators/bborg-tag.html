@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>integration &laquo; Tags &laquo; bbPress Support Forums</title>
+<link rel="stylesheet" href="/common-theme/960/reset.css"
+	type="text/css" />
+<link rel="stylesheet" href="/common-theme/960/text.css" type="text/css" />
+<link rel="stylesheet" href="/common-theme/960/960.css" type="text/css" />
+<link rel="stylesheet"
+	href="http://bbpress.org/forum-theme/bborg/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Tag: integration - Recent Posts"
+	href="http://bbpress.org/forums/rss/tags/integration" />
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Tag: integration - Recent Topics"
+	href="http://bbpress.org/forums/rss/tags/integration/topics" />
+<meta name="generator" content="bbPress 1.1-alpha-2855" />
+<script type='text/javascript'
+	src='http://bbpress.org/forums/bb-includes/js/jquery/jquery.js?ver=1.4.2'></script>
+<script type="text/javascript">
+	window.onload = function() {
+		var watched = document.getElementById('forum-id');
+		var affected = document.getElementById('topic-support-status');
+		var forums = '|1|2|3|4|';
+		if (forums.indexOf('|' + watched.value + '|') === -1) {
+			affected.disabled = 'disabled';
+		}
+		watched.onchange = function() {
+			var current = (watched.options[watched.selectedIndex].value);
+			if (forums.indexOf('|' + current + '|') === -1) {
+				affected.disabled = 'disabled';
+			} else {
+				affected.disabled = false;
+			}
+		}
+	}
+</script>
+</head>
+<body id="tag-page">
+	<div id="bborg-banner-container">
+		<div id="bborg-banner" role="banner" class="container_12">
+			<div class="grid_3">
+				<h1 id="bborg-title">
+					<a href="/">bbPress</a>
+				</h1>
+			</div>
+			<div class="grid_9">
+				<ul id="bborg-nav">
+					<li><a href="/">Home</a>
+					</li>
+					<li><a href="/plugins/">Plugins</a>
+					</li>
+					<li><a href="/about/">About</a>
+					</li>
+					<li><a href="/documentation/">Docs</a>
+					</li>
+					<li><a href="/blog/">Blog</a>
+					</li>
+					<li><a class="current" href="/forums/">Forums</a>
+					</li>
+					<li><a class="download" href="/download/">Download</a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="bborg-login-container">
+		<div class="container_12">
+			<h2>Forums</h2>
+
+
+			<div id="bborg-login">
+				<form method="post" action="http://bbpress.org/forums/bb-login.php">
+					<fieldset>
+						<input name="re" type="hidden" value="" /> <input type="hidden"
+							name="_wp_http_referer" value="/forums/tags/integration" /> <label
+							for="bborg-login-username">Username</label> <input
+							id="bborg-login-username" name="user_login" type="text"
+							title="Username" maxlength="40" tabindex="1" value="username" />
+						<label for="bborg-login-password">Password</label> <input
+							id="bborg-login-password" name="password" type="password"
+							title="Password" maxlength="40" tabindex="2" value="password" />
+						<label for="bborg-login-remember">Remember me</label> <input
+							id="bborg-login-remember" name="remember" type="checkbox"
+							title="Remember me for 2 weeks" tabindex="3" value="1" /> <input
+							name="log_in" type="submit" tabindex="4" value="Log In" /> <a
+							href="http://bbpress.org/forums/register.php" class="button">Join</a>
+						<script type="text/javascript" charset="utf-8">
+							var login_username = document
+									.getElementById('bborg-login-username');
+							login_username.onfocus = function(e) {
+								if (e.srcElement.value === 'username') {
+									e.srcElement.value = '';
+								}
+							}
+							login_username.onblur = function(e) {
+								if (e.srcElement.value === '') {
+									e.srcElement.value = 'username';
+								}
+							}
+							var login_password = document
+									.getElementById('bborg-login-password');
+							login_password.onfocus = function(e) {
+								if (e.srcElement.value === 'password') {
+									e.srcElement.value = '';
+								}
+							}
+							login_password.onblur = function(e) {
+								if (e.srcElement.value === '') {
+									e.srcElement.value = 'password';
+								}
+							}
+						</script>
+					</fieldset>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div role="main" class="container_12">
+		<div class="container_12">
+			<div id="bborg-crumbs" class="grid_9">
+				<a href="http://bbpress.org/forums/">bbPress Support Forums</a>
+				&raquo; <a href="http://bbpress.org/forums/tags/">Tags</a> &raquo; <span
+					class="current">integration</span>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+
+		<div role="main" class="container_12">
+			<div class="grid_4">
+				<div id="bborg-simple-search">
+					<form role="search" action="http://bbpress.org/forums/search.php"
+						method="get">
+						<fieldset>
+							<label for="bborg-simple-search-input">Search</label> <input
+								id="bborg-simple-search-input" name="q" type="search"
+								autosave="bbpress-org-forums" results="10" maxlength="100" /> <input
+								type="submit" value="Search" />
+						</fieldset>
+					</form>
+				</div>
+				<div id="bborg-feeds">
+					<ul>
+						<li><a href="http://bbpress.org/forums/rss/tags/integration"
+							title="RSS feed of recent posts tagged integration">Recent
+								Posts tagged <em>integration</em>
+						</a>
+						</li>
+						<li><a
+							href="http://bbpress.org/forums/rss/tags/integration/topics"
+							title="RSS feed of recent topics tagged integration">Recent
+								Topics tagged <em>integration</em>
+						</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="grid_8">
+				<div id="bborg-discussion-form"></div>
+				<div id="bborg-discussions">
+					<h2>
+						Topics<span> &#8212; <a
+							href="http://bbpress.org/forums/bb-login.php?redirect_to=http://bbpress.org/forums/tags/integration#postform"
+							class="new-topic">start new</a> </span>
+					</h2>
+
+
+					<table>
+						<thead>
+							<tr>
+								<th class="topic "></th>
+								<th class="num">Posts</th>
+								<th class="num">Voices</th>
+								<th class="date end">Last Post</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a
+									href="http://bbpress.org/forums/topic/suggest-whats-the-best-weigh-in-here">SUGGEST!!!
+										whats the best?? weigh in here...</a>
+									<div>
+										<span></span>
+									</div></td>
+								<td class="num"><a
+									href="http://bbpress.org/forums/topic/suggest-whats-the-best-weigh-in-here">5</a>
+								</td>
+								<td class="num"><a
+									href="http://bbpress.org/forums/topic/suggest-whats-the-best-weigh-in-here">4</a>
+								</td>
+								<td class="date"><a
+									href="http://bbpress.org/forums/topic/suggest-whats-the-best-weigh-in-here#post-90951">1
+										week</a>
+									<div>Devon Steel Fabrication</div></td>
+							</tr>
+							<tr class="alt">
+								<td><a
+									href="http://bbpress.org/forums/topic/wp-30-beta-2-integrated-user-registration">WP
+										3.0 beta 2 integrated user registration</a>
+									<div>
+										<span></span>
+									</div></td>
+								<td class="num"><a
+									href="http://bbpress.org/forums/topic/wp-30-beta-2-integrated-user-registration">28</a>
+								</td>
+								<td class="num"><a
+									href="http://bbpress.org/forums/topic/wp-30-beta-2-integrated-user-registration">10</a>
+								</td>
+								<td class="date"><a
+									href="http://bbpress.org/forums/topic/wp-30-beta-2-integrated-user-registration#post-90858">1
+										week</a>
+									<div>thenbrent</div></td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+					<h2 style="margin-top: 20px;">Start New Topic</h2>
+					<p>
+						You must <a href="http://bbpress.org/forums/bb-login.php">log
+							in</a> to post.
+					</p>
+
+
+				</div>
+			</div> <!-- class="grid_8" -->
+		</div><!-- role="main" -->
+		<div class="clear"></div>
+
+	</div>
+	<div class="clear"></div>
+	<div id="bborg-contentinfo" role="contentinfo" class="container_12">
+		<div id="bborg-extra" class="grid_2">
+			<ul>
+				<li><a href="/about/privacy/">Privacy</a>
+				</li>
+				<li><a href="/about/gpl/"><abbr title="GNU Public License">GPL</abbr>
+				</a>
+				</li>
+			</ul>
+		</div>
+		<div id="bborg-also" class="grid_8">
+			<h2>See also:</h2>
+			<ul>
+				<li><a href="http://wordpress.org/">WordPress.org</a>
+				</li>
+				<!-- <li><a href="http://wordpress.com/">WordPress.com</a></li> -->
+				<li><a href="http://wordpress.tv/">WordPress.TV</a>
+				</li>
+				<li><a href="http://wordcamp.org/">WordCamp</a>
+				</li>
+				<li><a href="http://jobs.wordpress.net/">WP Jobs</a>
+				</li>
+				<li><a href="http://ma.tt/">Matt</a>
+				</li>
+				<li><a
+					href="http://www.facebook.com/pages/bbPress/37285629283/">Fan
+						bbPress on Facebook</a>
+				</li>
+				<li><a href="http://bbpress.org/blog/feed/" class="feed">Blog
+						Feed</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+</body>
+</html>

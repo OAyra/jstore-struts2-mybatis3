@@ -4,17 +4,37 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-
+	<constant name="struts.action.extension" value="action,,"/>
     <package name="forum" namespace="/forum" extends="struts-default">
- 	    <action name="forum_*" class="com.usemodj.forum.struts.action.ForumAction" method="{1}">
+	   <interceptors>
+	   		<interceptor name="login" class="com.usemodj.forum.interceptor.LoginInterceptor"/>
+	       <interceptor-stack name="authStack">
+	          <interceptor-ref name="login"/>
+	        <interceptor-ref name="defaultStack"/>
+	       </interceptor-stack>
+	  </interceptors>
+        <global-results>
+            <result name="login">/forum/default/login.jsp</result>
+            <result name="login-success" type="redirectAction">/forum/</result>
+        </global-results>
+    
+	    
+ 	    <action name="topic" class="com.usemodj.forum.struts.action.TopicAction" >
+			<result name="success">/forum/default/topic.jsp</result>
+		</action>
+		
+ 	    <action name="tag_*"  class="com.usemodj.forum.struts.action.TagAction"  method="{1}">
+ 	    	<result name="success">/forum/default/tags.jsp</result>
+	        <result name="topics">/forum/default/tag.jsp</result>
+	    </action>
+		
+ 	    <action name="*"  class="com.usemodj.forum.struts.action.ForumAction" method="{1}">
+ 	    	<result>/forum/default/frontPage.jsp</result>
 	        <result name="list">/forum/default/forumList.jsp</result>
 	        <!--result name="success" type="redirectAction">index.action</result-->
 	    	<result name="redirect" type="redirect">${url}</result>
+	        <result name="forum">/forum/default/forum.jsp</result>
 	    </action>
- 	    <action name="*" class="com.usemodj.forum.struts.action.ForumAction" >
-			<result>/forum/default/frontPage.jsp</result>
-		</action>
-
-        <!-- Add actions here -->
+       <!-- Add actions here -->
     </package>
 </struts>
