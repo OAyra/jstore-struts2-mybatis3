@@ -64,6 +64,12 @@ public class BBLoop {
 		//TODO: reinstate()
 	}
 	
+	public boolean isLooping() {
+		return looping;
+	}
+	public void setLooping(boolean looping) {
+		this.looping = looping;
+	}
 	public String pad( String pad, int offset) {
 		return StringUtils.repeat( pad, this.walker.depth -1);
 	}

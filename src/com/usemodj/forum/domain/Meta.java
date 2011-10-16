@@ -25,7 +25,13 @@ public class Meta implements Serializable {
 	public Meta() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public Meta( long objectId, String metaKey, String metaValue, String objectType) {
+		this.objectId = objectId;
+		this.metaKey = metaKey;
+		this.metaValue = metaValue;
+		this.objectType = objectType;
+	}
 	/*  setter/getter methods */
 	public long getMetaId() {
 		return metaId;

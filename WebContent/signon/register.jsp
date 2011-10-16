@@ -21,7 +21,7 @@
 
 				<h2><s:text name="register"/></h2>
 				
-				<s:form action="register_execute" method="post">
+				<s:form action="register" method="post">
 					<s:token/>
 					<s:textfield key="signon.username" /> 
 					<s:password key="signon.password" />

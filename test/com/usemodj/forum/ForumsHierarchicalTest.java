@@ -40,7 +40,7 @@ public class ForumsHierarchicalTest {
 			for( long k : forums.keySet()) {
 				Forum f = forums.get( k);
 				System.out.println("-- [ " + k + "], forumId: "+ f.getForumId()+", parent: "+ f.getForumParent()+ ", forumName: "+ f.getForumName() + ", forumOrder: "+ f.getForumOrder());
-				if( null != f.getMeta()) System.out.println("   meta key: " + f.getMeta().getMetaKey() + ", meta value: "+ f.getMeta().getMetaValue());
+				System.out.println(" -- Metas: "+ f.getMetas().toString());
 			}
 			
 			ForumsHierarchical fh = new ForumsHierarchical();
@@ -54,7 +54,7 @@ public class ForumsHierarchicalTest {
 				Forum f = (Forum)forumsMap.get( k);
 				if( null != f) {
 					System.out.println("-- [ " + k + "], forumId: "+ f.getForumId()+", forumParent: "+ f.getForumParent()+ ", forumName: "+ f.getForumName() + ", forumOrder: "+ f.getForumOrder());
-					if( null != f.getMeta()) System.out.println("   meta key: " + f.getMeta().getMetaKey() + ", meta value: "+ f.getMeta().getMetaValue());
+					System.out.println(" -- Metas: "+ f.getMetas().toString());
 				}
 			}
 
@@ -71,7 +71,7 @@ public class ForumsHierarchicalTest {
 	}
 
 	@Test
-	public void forumsLoopStep() {
+	public void testForumsLoopStep() {
 		SqlSession sqlSession = null;
 	    try {
 			sqlSession = sqlSessionFactory.openSession();
@@ -80,7 +80,7 @@ public class ForumsHierarchicalTest {
 			for( long k : forums.keySet()) {
 				Forum f = forums.get( k);
 				System.out.println("-- [ " + k + "], forumId: "+ f.getForumId()+", parent: "+ f.getForumParent()+ ", forumName: "+ f.getForumName() + ", forumOrder: "+ f.getForumOrder());
-				if( null != f.getMeta()) System.out.println("   meta key: " + f.getMeta().getMetaKey() + ", meta value: "+ f.getMeta().getMetaValue());
+				System.out.println(" -- Metas: "+ f.getMetas().toString());
 			}
 			
 			ForumsHierarchical fh = new ForumsHierarchical();
@@ -96,12 +96,12 @@ public class ForumsHierarchicalTest {
 					Forum f = (Forum)forumsMap.get( k);
 					//if( null != f) {
 						System.out.println("== [ " + k + "], forumId: "+ f.getForumId()+ ", forumName: "+ f.getForumName() + ", forumOrder: "+ f.getForumOrder());
-						if( null != f.getMeta()) System.out.println("   meta key: " + f.getMeta().getMetaKey() + ", meta value: "+ f.getMeta().getMetaValue());
+						System.out.println(" -- Metas: "+ f.getMetas().toString());
 					//}forumsLoop
 				}
 			
 			if( null != fh.getForumsLoopElements(forumsMap)) {
-				while( fh.forumsLoopStep()) {
+				while( fh.forumsLoopStep() > 0) {
 					//System.out.println(" -- forumId: "+ fh.forum.getForumId() + ", forumName: "+ fh.forum.getForumName());
 					if( fh.isForumIsCategory()) {
 					//if( null != fh.forum.getMeta() && "forum_is_category".equals( fh.forum.getMeta().getMetaKey()) && "1".equals(fh.forum.getMeta().getMetaValue() ) ) {

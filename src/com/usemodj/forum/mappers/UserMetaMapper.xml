@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.UserMetaMapper">
+
+	<select id="selectFoundRows" resultType="long">
+		SELECT FOUND_ROWS() AS total
+	</select>
+	<select id="selectLastInsertId" resultType="long">
+		SELECT LAST_INSERT_ID() AS lastInsertId
+	</select>
+	
+	<select id="selectUserMeta"  resultType="UserMeta">
+	SELECT 
+		umeta_id   AS umetaId,    
+		user_id    AS userId,    
+		meta_key   AS metaKey,   
+		meta_value AS metaValue 
+	FROM bb_usermeta
+	WHERE  user_id = #{userId}
+		AND meta_key = #{metaKey}
+	</select>
+	<insert id="insertUserMeta">
+	INSERT INTO bb_usermeta
+		(user_id,   
+		meta_key,  
+		meta_value)
+		VALUES (
+		#{userId   },
+		#{metaKey  },
+		#{metaValue}
+		)	
+	</insert>
+	<update id="updateUserMeta">
+	UPDATE bb_usermeta
+		SET 
+		meta_key  = #{metaKey  },
+		meta_value= #{metaValue}
+	WHERE umeta_id = #{umetaId}
+	</update>
+		
+	</mapper>

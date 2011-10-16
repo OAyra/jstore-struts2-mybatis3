@@ -41,27 +41,28 @@ public class ForumAction<E> extends BaseAction {
 	private List<Forum> forums = null;
 	ForumsHierarchical fh = new ForumsHierarchical();
 	int page = 1;
-	private String siteName;
+	//private String siteName;
 	String breadcrumbs;
-	private  E  topTags;
+	private   E  topTags;
+	private String forumDropdown;
 	
 	public String index() throws Exception{
 		return execute();
 	}
 	public String execute() throws  Exception {
 		SqlSession sqlSession = null;
+		//logger.debug( "-- character Encoding: " + request.getCharacterEncoding());
+		
 		try {
+			this.setLocation( Location.FRONT);
 			sqlSession = this.getForumSqlSessionFactory().openSession();
 			paginate.setLocation(Location.FRONT);
 			if( 0< getPage()) this.paginate.setPage( getPage());
 			topicService.getLatestTopics(sqlSession, paginate);
-			logger.debug("----- ForumAction SUCCESS  count: "+ paginate.getCount());
-			logger.debug("----- Paginate page: "+ paginate.getPage() + " , perPage: "+ paginate.getPerPage());
+			// logger.debug("----- ForumAction SUCCESS  count: "+ paginate.getCount());
+			// logger.debug("----- Paginate page: "+ paginate.getPage() + " , perPage: "+ paginate.getPerPage());
 			//stickyTopics = (List<Topic>) paginate.getResults();
 			stickyTopics = topicService.getStickyTopics(sqlSession, -1);
-//			forums = forumService.getForumsWithMeta( sqlSession);
-//			if( logger.isDebugEnabled())
-//				logger.debug("--- ForumAction  Forums size : " +( ( forums  != null)? forums.size(): 0));
 			Map<Long, Forum> forums = forumService.getForumsWithMetaMap(sqlSession);
 			int childOf =0;
 			int hierarchical = 1;
@@ -73,7 +74,6 @@ public class ForumAction<E> extends BaseAction {
 			//Top Tags
 			//getTagHeatMap(SqlSession sqlSession, int page, String contextPath)
 			this.topTags = (E)getTagHeatMap( sqlSession,  0, request.getContextPath());
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error( "-- ForumAction.execute() Exception: "+  e.getMessage());
@@ -83,13 +83,58 @@ public class ForumAction<E> extends BaseAction {
 		
 		return Action.SUCCESS;
 	}
+	public String newTopic() throws  Exception {
+		SqlSession sqlSession = null;
+		try {
+			this.setLocation( Location.FRONT);
+			sqlSession = this.getForumSqlSessionFactory().openSession();
+			Map<Long, Forum> forums = forumService.getForumsWithMetaMap(sqlSession);
+			int childOf =0;
+			int hierarchical = 1;
+			int depth = 0;
+			int cutBranch = 0;
+			Map<Long, Forum> forumsMap = this.fh.getForumsMap( forums, childOf, hierarchical, depth, cutBranch);
+			this.fh.getForumsLoopElements(forumsMap);
+			request.setAttribute("fh", this.fh);
+
+//			 *  	$defaults = array( 'callback' => false, 'callback_args' => false, 'id' => 'forum_id', 'none' => false
+//			 *  										, 'selected' => false, 'tab' => false, 'hierarchical' => 1, 'depth' => 0
+//			 *  										, 'child_of' => 0, 'disable_categories' => 1, 'options_only' => false );
+			
+			String id = "forum_id";
+			String none = null; // "-None-";
+			int selected = (null != this.forum)? this.forum.getForumId(): 0;
+			int tab = 0;
+			//int hierarchical = 1;
+			//int depth = 0;
+			//int childOf = 0;
+			int disableCategories = 1;
+			boolean optionsOnly = false;
+			this.forumDropdown = getForumDropdown( this.fh, id, none, selected, tab, hierarchical, depth
+															, childOf, disableCategories, optionsOnly);
+			this.fh.getForumsLoop().setLooping( false);
+			
+			//Top Tags
+			//getTagHeatMap(SqlSession sqlSession, int page, String contextPath)
+			this.topTags = (E)getTagHeatMap( sqlSession,  0, request.getContextPath());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error( "-- ForumAction.execute() Exception: "+  e.getMessage());
+		} finally {
+			if( null != sqlSession) sqlSession.close();
+		}
+		
+		return "newTopic";
+	}
 	
 	public String forum() throws Exception {
 		SqlSession sqlSession = null;
 		try {
+			this.setLocation( Location.FORUM);
 			sqlSession = this.getForumSqlSessionFactory().openSession();
 			//site name
-			this.siteName = metaService.getBBOption(sqlSession, "name");
+			//this.siteName = metaService.getBBOption(sqlSession, "name");
 			//forum's bread crumb
 			String cssClass = "";
 			this.breadcrumbs = forumService.getForumBreadCrumb( sqlSession,  request.getContextPath(), this.getForum().getForumId(),  "&raquo;", cssClass, true);
@@ -98,8 +143,8 @@ public class ForumAction<E> extends BaseAction {
 			paginate.setObjectId( this.getForum().getForumId());
 			paginate.setPage( this.getPage());
 			topicService.getLatestTopics(sqlSession, paginate);
-			logger.debug("----- ForumAction FORUM  count: "+ paginate.getCount());
-			logger.debug("----- Paginate page: "+ paginate.getPage() + " , perPage: "+ paginate.getPerPage());
+			//logger.debug("----- ForumAction FORUM  count: "+ paginate.getCount());
+			//logger.debug("----- Paginate page: "+ paginate.getPage() + " , perPage: "+ paginate.getPerPage());
 			
 			// sticky topics
 			stickyTopics = topicService.getStickyTopics(sqlSession,  forum.getForumId());
@@ -111,10 +156,19 @@ public class ForumAction<E> extends BaseAction {
 			Map<Long, Forum> forumsMap = fh.getForumsMap( forums, childOf, hierarchical, depth, cutBranch);
 			fh.getForumsLoopElements(forumsMap);
 			request.setAttribute("fh", fh);
-		
+
+			if( this.forum.getForumId() > 0) {
+				this.forum = forumService.getForum( sqlSession, this.forum.getForumId());
+				//logger.debug(" --- forum forumName: " + forum.getForumName());
+				//logger.debug("--- forum forumDesc: " + forum.getForumDesc());
+			}
+
+			// TopTags 
+			
 		} catch (Exception e) {
 			// 	e.printStackTrace();
 			logger.error( "-- ForumAction.forum() Exception: "+  e.getMessage());
+			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
@@ -139,7 +193,84 @@ public class ForumAction<E> extends BaseAction {
 		
 		return Constants.LIST;
 	}
-	
+	/**
+	 *  	$defaults = array( 'callback' => false, 'callback_args' => false, 'id' => 'forum_id', 'none' => false
+	 *  										, 'selected' => false, 'tab' => false, 'hierarchical' => 1, 'depth' => 0
+	 *  										, 'child_of' => 0, 'disable_categories' => 1, 'options_only' => false );
+	 * 
+	 * @param  id
+	 * @param none
+	 * @param selected 	: int  fourmId
+	 * @param tab
+	 * @param hierarchical
+	 * @param depth
+	 * @param childOf
+	 * @param disableCategories
+	 * @param optionsOnly
+	 */
+	public String getForumDropdown( ForumsHierarchical fh,String id, String none, int  selected, int tab, int hierarchical, int depth,
+			int childOf, int disableCategories, boolean optionsOnly	){
+		//TODO: getForumDropdown
+		String tabIndex = "";
+		String ret ="";
+		String name = id;
+		id = id.replaceAll("_", "-");
+		if( !optionsOnly){
+			if( 0<  tab) tabIndex = "tabindex='"+ tab +"'"; 
+			ret += "<select name='"+ id + "' id='" + id + "'"+ tabIndex + "> \n";
+		}
+		if(null != none) ret += "\n <option value='0'>"+  getText( none) + "</option>\n";
+		boolean noOptionSelected = true;
+		List<HashMap<String, Object>> options = new ArrayList<HashMap<String, Object>>();
+		while( fh.forumsLoopStep() > 0) {
+			String padLeft = fh.getForumsLoop().pad("&nbsp;&nbsp;&nbsp;", 0);
+			if( disableCategories > 0 && fh.isForumIsCategory()) {
+				HashMap<String, Object> option = new HashMap<String, Object>();
+				options.add( option);
+				option.put("value", 0);
+				option.put("display", padLeft + fh.getForum().getForumName() );
+				option.put("disabled", true);
+				option.put("selected", false);
+				
+				continue;
+			}
+			boolean _selected = false;
+			if( selected  == fh.getForum().getForumId()) {
+				_selected = true;
+				noOptionSelected = false;
+			}
+			HashMap<String, Object> option = new HashMap<String, Object>();
+			options.add( option);
+			option.put("value", fh.getForum().getForumId());
+			option.put("display", padLeft + fh.getForum().getForumName() );
+			option.put("disabled", false);
+			option.put("selected", _selected);
+		} //end while
+		if(  1 == options.size() && null != none) {
+			for( Map option : options){
+				if( (Boolean) option.get("disabled")) return "";
+				return "<input type='hidden' name='" + name + "' id='"+ id + "' value='" + option.get("value") + "' /><span>"
+						+ option.get("display") + "</span>";
+			}
+		}
+		for( Map option: options){
+			boolean optionSelected = (Boolean) option.get("selected");
+			boolean optionDisabled = (Boolean) option.get("disabled");
+			if( null == none && selected < 1 && noOptionSelected && !optionDisabled){
+				optionSelected = true;
+				noOptionSelected = false;
+			}
+			String optDisabled = optionDisabled ? " disabled='disabled' ": "";
+			String optSelected = optionSelected ? " selected='selected' ": "";
+			ret += "\n <option value='"+ option.get("value") + "' " + optDisabled + optSelected + ">"
+					+ option.get("display") + "</option>\n";
+		}
+		if( !optionsOnly) 
+			ret += "</select>\n";
+		
+		return ret;
+	}
+				
 	public int getPageNumber( long rows){
 		return Paginate.getPageNumber(rows, Paginate.PER_PAGE);
 	}
@@ -241,18 +372,18 @@ public class ForumAction<E> extends BaseAction {
 		return (E) ret;
 	}
 	
-	public String getTopicPages(){
-		return getTopicPages("<div class='nav'>", "</div>");
+	public String getTopicPages( String action){
+		return getTopicPages( action, "<div class='nav'>", "</div>");
 	}
-	public String getTopicPages(String before, String after){
+	public String getTopicPages(String action, String before, String after){
 //		String before = "<div class='nav'>";
 //		String after ="</div>";
-		logger.debug("--- getTopicPages: page="+this.page + ", total="+ this.paginate.getCount() );
-		return getTopicPages(this.page, this.paginate.getCount(), before, after);
+		//logger.debug("--- getTopicPages: page="+this.page + ", total="+ this.paginate.getCount() );
+		return getTopicPages(this.page, this.paginate.getCount(), action, before, after);
 	}
 
-	public String getTopicPages( int page, long total, String before, String after ) {
-		String uri = request.getContextPath()+"/forum/";
+	public String getTopicPages( int page, long total, String action, String before, String after ) {
+		String uri = request.getContextPath()+"/forum/" + action;
 		String queryString = request.getQueryString();
 		logger.debug("-- getTopicPages: request.getQueryString(): " + queryString);
 		String format = "page=%#%";
@@ -273,7 +404,7 @@ public class ForumAction<E> extends BaseAction {
 		String nextTitle = getText( "Next page");
 		String nTitle = getText("Page %d");
 		int perPage = Paginate.PER_PAGE;
-		int midSize = 2; 
+		int midSize = 1; 
 		int endSize = 1;
 		LinkType type = LinkType.FLAT;
 		String addFragment ="";
@@ -354,13 +485,13 @@ public class ForumAction<E> extends BaseAction {
 		this.page = page;
 	}
 
-	public String getSiteName() {
-		return siteName;
-	}
-
-	public void setSiteName(String siteName) {
-		this.siteName = siteName;
-	}
+//	public String getSiteName() {
+//		return siteName;
+//	}
+//
+//	public void setSiteName(String siteName) {
+//		this.siteName = siteName;
+//	}
 
 	public String getBreadcrumbs() {
 		return breadcrumbs;
@@ -372,8 +503,14 @@ public class ForumAction<E> extends BaseAction {
 	public <E> E  getTopTags() {
 		return (E) topTags;
 	}
-	public  void setTopTags( E topTags) {
-		this.topTags = (E) topTags;
+	public   void setTopTags( E topTags) {
+		this.topTags =  topTags;
+	}
+	public String getForumDropdown() {
+		return forumDropdown;
+	}
+	public void setForumDropdown(String forumDropdown) {
+		this.forumDropdown = forumDropdown;
 	}
 	
 }

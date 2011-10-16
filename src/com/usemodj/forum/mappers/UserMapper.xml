@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.usemodj.forum.mappers.UserMapper">
+	<cache/>
+	<select id="selectFoundRows" resultType="long">
+		SELECT FOUND_ROWS() AS cnt
+	</select>
+	<select id="selectLastInsertId" resultType="long">
+		SELECT LAST_INSERT_ID() AS lastInsertId
+	</select>
+	<select id="selectUser" parameterType="User"  resultType="User">
+		SELECT 			
+			ID              AS id        	 ,	
+			user_login      AS userLogin     ,
+			user_pass       AS userPass      ,
+			user_nicename   AS userNicename  ,
+			user_email      AS userEmail     ,
+			user_url        AS userUrl       ,
+			user_registered AS userRegistered,
+			user_status     AS userStatus    ,
+			display_name   	AS displayName      		
+		FROM bb_users
+		<where>
+			<choose>
+			<when test=" user.by == 'ID' ">ID = #{user.id}	</when>
+			<when test=" user.by =='user_login'"> user_login = #{user.userLogin}</when>
+			<when test=" user.by =='user_email'">user_email = #{user.userEmail}</when>
+			</choose>
+		</where>
+		LIMIT 1
+	</select>
+	<select id="selectUserByLoginOrEmail" parameterType="User"  resultType="User">
+		SELECT 			
+			ID              AS id        	 ,	
+			user_login      AS userLogin     ,
+			user_pass       AS userPass      ,
+			user_nicename   AS userNicename  ,
+			user_email      AS userEmail     ,
+			user_url        AS userUrl       ,
+			user_registered AS userRegistered,
+			user_status     AS userStatus    ,
+			display_name   	AS displayName      		
+		FROM bb_users
+		<where>
+			user_login = #{user.userLogin}
+			OR user_email = #{user.userEmail}
+		</where>
+	</select>
+	
+	<update id="updateUserStatus">
+		UPDATE bb_users SET user_status = #{userStatus}
+		WHERE ID = #{userId}
+	</update>
+	
+	<insert id="insertUser"  parameterType="User">
+	INSERT INTO bb_users			
+		(user_login     ,  
+		user_pass      , 
+		user_nicename  , 
+		user_email     , 
+		user_url       , 
+		user_registered, 
+		user_status    , 
+		display_name)
+	VALUES ( 
+	#{user.userLogin     }, 
+	#{user.userPass      },
+	#{user.userNicename  },
+	#{user.userEmail     },
+	#{user.userUrl       },
+	#{user.userRegistered},
+	#{user.userStatus    },
+	#{user.displayName   }
+		)
+	</insert>
+</mapper>

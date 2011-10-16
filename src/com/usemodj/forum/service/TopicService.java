@@ -67,11 +67,13 @@ public class TopicService {
 	}
 
 	 void appendMeta(SqlSession sqlSession, List<Topic> topics, String objectType) throws Exception {
+		 if( null == topics || topics.isEmpty()) return;
 		 metaMapper = sqlSession.getMapper( MetaMapper.class);
 		Map<Long, Topic> trans = new HashMap<Long, Topic>();
 		for( Topic topic: topics) {
 			trans.put(topic.getTopicId(), topic);
 		}
+		//logger.debug("--- trans : " + trans.toString());
 		
 		Long[] queryIds = trans.keySet().toArray(new Long[0]);
 		List<Meta> metas = metaMapper.selectMetaLongArr(queryIds, objectType);

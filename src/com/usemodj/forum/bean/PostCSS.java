@@ -35,7 +35,14 @@ public class PostCSS {
 		}
 		return StringUtils.join(cssClass, " ");
 	}
-	public String getPostDelAltClass( ) {
+	public String getPostDelAltClass( String cssClazz ) {
+		if( !StringUtils.isBlank( cssClazz)) {
+			String[] css = cssClazz.split(" ");
+			for( String c: css) {
+				this.cssClass.add( c);
+			}
+		}
+
 		return altClass("post", getPostDelClass( ));
 	}
 	public String  altClass(String key, String cssClass) {
@@ -48,10 +55,10 @@ public class PostCSS {
 		cssClass = cssClass.trim();
 		 n = (Integer) bbAlt.get( key) %2;
 		if( (null != cssClass) ^ 0 != n)
-			css = " class='"+( ( cssClass != null)? cssClass :  "alt") +"'";
+			css = " class=\""+( ( cssClass != null)? cssClass :  "alt") +"\"";
 		else if(null != cssClass && 0 != (Integer)bbAlt.get(key) % 2)
-			css = " class='"+ cssClass + " alt'";
-		logger.debug(" ----- altClass css: "+ css);
+			css = " class=\""+ cssClass + " alt\"";
+		logger.debug(" -----PostCSS: altClass css: "+ css);
 		return css;
 	}
 	public Post getPost() {

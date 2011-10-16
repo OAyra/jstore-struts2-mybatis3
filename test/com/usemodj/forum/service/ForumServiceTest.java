@@ -38,7 +38,7 @@ public class ForumServiceTest {
 			System.out.println(" --- forums size: "+ forums.size());
 			for( Forum f : forums) {
 				System.out.println("-- forumId: "+ f.getForumId()+ ", forumName: "+ f.getForumName() + ", forumOrder: "+ f.getForumOrder());
-				if( null != f.getMeta()) System.out.println("   meta key: " + f.getMeta().getMetaKey() + ", meta value: "+ f.getMeta().getMetaValue());
+				if( null != f.getMetas()) System.out.println("   meta key: " + f.getMetas().toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

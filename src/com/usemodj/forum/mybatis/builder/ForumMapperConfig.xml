@@ -28,6 +28,8 @@
     <typeAlias alias="Post" 	type="com.usemodj.forum.domain.Post"/>
     <typeAlias alias="Term" 	type="com.usemodj.forum.domain.Term"/>
     <typeAlias alias="TermTaxonomy" 	type="com.usemodj.forum.domain.TermTaxonomy"/>
+    <typeAlias alias="User" 	type="com.usemodj.forum.domain.User"/>
+    <typeAlias alias="UserMeta" 	type="com.usemodj.forum.domain.UserMeta"/>
     </typeAliases>
 <!--  
   <typeHandlers>
@@ -84,6 +86,8 @@
     <mapper resource="com/usemodj/forum/mappers/MetaMapper.xml"/>        
     <mapper resource="com/usemodj/forum/mappers/TermMapper.xml"/>        
     <mapper resource="com/usemodj/forum/mappers/TermRelationshipMapper.xml"/>        
+     <mapper resource="com/usemodj/forum/mappers/UserMapper.xml"/>        
+     <mapper resource="com/usemodj/forum/mappers/UserMetaMapper.xml"/>        
   </mappers>
 
 </configuration>

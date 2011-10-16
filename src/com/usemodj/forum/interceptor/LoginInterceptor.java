@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.StrutsStatics;
 
@@ -17,9 +18,10 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
 public class LoginInterceptor extends AbstractInterceptor implements StrutsStatics {
 	private static final long serialVersionUID = 4630601143941564841L;
-	private static final String USER_HANDLE = "loggedInUser";  
+	private static Logger logger = Logger.getLogger( LoginInterceptor.class);
+	private static final String USER_HANDLE = "user";  
 	 private static final String LOGIN_ATTEMPT = "loginAttempt";
-	 private static final String REDIRECT_TO = "redirectTo";
+	 private static final String REDIRECT_TO = "url";
 	 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
@@ -27,13 +29,16 @@ public class LoginInterceptor extends AbstractInterceptor implements StrutsStati
         Map session = invocation.getInvocationContext().getSession();
         Map parameters = invocation.getInvocationContext().getParameters();
         
-
+        if( logger.isDebugEnabled()) {
+        	logger.debug("--LoginInterceptor- session: " + session.toString());
+        	logger.debug(" --- parameters: " + parameters.toString());
+        }
         // Is there a "user" object stored in the user's HttpSession?
         Object user = session.get(USER_HANDLE);
         if (user == null) {
             // The user has not logged in yet.
            // Is the user attempting to log in right now?
-            String loginAttempt = (String)parameters.get( LOGIN_ATTEMPT);
+            String loginAttempt = String.valueOf( parameters.get( LOGIN_ATTEMPT));
             if ( !StringUtils.isBlank (loginAttempt) ) { // The user is attempting to log in.
             	return invocation.invoke();
             } 

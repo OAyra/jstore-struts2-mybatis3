@@ -36,7 +36,8 @@ public class Post implements Serializable {
 	long postPosition;   // bigint(20)
 	
 	Map metas = new HashMap();
-
+	String tags = null; // comma separated tags
+	
 	public Post() {
 		// TODO Auto-generated constructor stub
 	}
@@ -101,4 +102,18 @@ public class Post implements Serializable {
 	public String getMetaValue( String metaKey) {
 		return (String) this.metas.get(metaKey);
 	}
+	
+	public Map getMetas() {
+		return metas;
+	}
+	public void setMetas(Map metas) {
+		this.metas = metas;
+	}
+	public String getTags() {
+		return tags;
+	}
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+	
 }

@@ -5,7 +5,7 @@
 }
 
 a {
-	color: rgb(50, 140, 0);
+	color: #2DA2CE;
 }
 
 a:hover {
@@ -102,7 +102,7 @@ input[type=checkbox]:focus {
     border-top-right-radius: 6px;
     border-top-style: solid;
     border-top-width: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-bottom: 8px;
     padding-left: 8px;
     padding-right: 8px;
@@ -203,13 +203,13 @@ input[type=checkbox]:focus {
 }
 
 #front-page #login-container {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 #login {
 	float: right;
 	margin-right: 10px;
-	margin-top: 10px;
+	margin-top: 2px;
 }
 
 #login p {

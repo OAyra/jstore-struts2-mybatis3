@@ -151,7 +151,7 @@ public class Paginate implements Serializable {
 		
 		int current = ( 1> page)? 1: page;
 		int totalPages = (int)Math.ceil((double)total/perPage);
-		if( totalPages < 2) return (E) null;
+		if( totalPages < 2) return (E) "";
 		//logger.debug("--- link uri:" + uri );
 		
 		List<String> pageLinks = new ArrayList<String>();

@@ -24,5 +24,7 @@ public interface MetaMapper {
 
 	void updateMeta(@Param("objectType") String objectType, @Param("objectType")long objectId,  @Param("metaKey")String metaKey,
 			@Param("metaValue")String metaValue) throws Exception;
+
+	void deleteMeta(@Param("metaId")long metaId) throws Exception;
 	
 }

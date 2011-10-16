@@ -107,4 +107,8 @@
 	WHERE  object_type = #{objectType} AND object_id =  #{objectId}
 		AND meta_key = #{metaKey}
 	</update>
+	
+	<delete id="deleteMeta" parameterType="long">
+		DELETE FROM meta WHERE meta_id = #{metaId}
+	</delete>
 </mapper>

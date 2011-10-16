@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.ibatis.session.RowBounds;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.usemodj.forum.domain.Forum;
 import com.usemodj.forum.domain.Meta;
+import com.usemodj.forum.domain.Post;
 import com.usemodj.forum.mappers.ForumMapper;
 import com.usemodj.forum.mappers.MetaMapper;
 import com.usemodj.struts.Paginate;
@@ -44,41 +46,49 @@ public class ForumService {
 	}
 
 	public List<Forum> getForumsWithMeta( SqlSession sqlSession) throws Exception {
-		Map forumMap = getForumsWithMetaMap( sqlSession);
-		return (List<Forum>) new ArrayList<Forum>(forumMap.values());
+		forumMapper =sqlSession.getMapper(  ForumMapper.class);
+		List<Forum> forums = forumMapper.selectForums( new RowBounds());
+		if( null != forums && forums.size()>0) {
+			appendForumMeta(sqlSession, forums, "bb_forum");
+		}
+		return forums;
 	}
 	
 	public Map<Long, Forum> getForumsWithMetaMap(SqlSession sqlSession) throws Exception {
-		//Map<Long, Forum> forumMap = new HashMap<Long, Forum>();  
 		Map<Long, Forum> forumMap = new LinkedHashMap<Long, Forum>();
-		try {
-			forumMapper =sqlSession.getMapper(  ForumMapper.class);
-			List<Forum> forums = forumMapper.selectForums( new RowBounds());
+		try {		
+			List<Forum> forums = getForumsWithMeta(sqlSession);
 			if( null != forums && forums.size()>0) {
-				for( Forum f: forums) {
+				for( Forum f: forums) 
 					forumMap.put( Long.valueOf( f.getForumId()), f);
-				}
-				
-				Long[] objectIds = forumMap.keySet().toArray( new Long[0]);
-				logger.debug("--- forumMap.keySet() objectIds length: "+ objectIds.length);
-				String objectType = "bb_forum";
-				metaMapper = sqlSession.getMapper( MetaMapper.class);
-				List<Meta> metas = metaMapper.selectMetaIN( ArrayUtils.toPrimitive(objectIds), objectType);
-				for(Meta m : metas){
-					long l = m.getObjectId();
-					Forum f = forumMap.get( l);
-					if( null != f) f.setMeta(m);
-				}
-				
 			}
 		} catch (Exception e) {
-			logger.error(" ForumService.selectForums() Exception: " + e.getMessage());
+			logger.error(" ForumService.getForumsWithMetaMap() Exception: " + e.getMessage());
 			throw e;
 		}
 		
 		return forumMap;
 	}
-	
+
+	private  void appendForumMeta(SqlSession sqlSession, List<Forum> forums, String objectType) throws Exception {
+		Map<Long, Forum>  forumMap = new LinkedHashMap<Long, Forum>();
+		for( Forum f : forums) {
+			forumMap.put( Long.valueOf( f.getForumId()), f);
+		}
+		Set<Long> keys = forumMap.keySet();
+		if( keys.size()> 0){
+			metaMapper = sqlSession.getMapper( MetaMapper.class);
+			List<Meta> metas = metaMapper.selectMetaLongArr( (Long[])keys.toArray( new Long[0]), objectType);
+			//List<Meta> metas = metaMapper.selectMetaIN( ArrayUtils.toPrimitive( (Long[])keys.toArray( new Long[0])), objectType);
+			
+			for( Meta meta: metas){
+				long forumId = meta.getObjectId();
+				Forum  f = forumMap.get( forumId);
+				f.setMetaValue(meta.getMetaKey(), meta.getMetaValue());
+			}
+		}
+	}
+
 //	public class EntryValueComparator implements Comparator{  
 //		   public int compare(Object o1, Object o2) {  
 //		      return compare((Map.Entry)o1, (Map.Entry)o2);  
@@ -131,7 +141,7 @@ public class ForumService {
 	}
 
 	private String getForumLink(int forumId, String contextPath) {
-		String uri = contextPath+"/forum/forum.action?forum.forumId="+forumId;
+		String uri = contextPath+"/forum/forum?forum.forumId="+forumId;
 		return uri;
 	}
 

@@ -2,13 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page
-	import="com.usemodj.forum.ForumsHierarchical,com.usemodj.forum.Location"%>
+	import="com.usemodj.forum.ForumsHierarchical"%>
 <body id="front-page">
+
 	<%@ include  file="/forum/default/_topContainer.jsp" %>
-	
 	<div id="main" role="main"  class="container_12">
 		<div class="grid_4">
 			<div id="forums">
+			
 				<h2>Forums</h2>
 				<table >
 					<tr>
@@ -17,7 +18,7 @@
 					</tr>
 					<%
 						ForumsHierarchical fh = (ForumsHierarchical) request.getAttribute("fh");
-						while (fh.forumsLoopStep()) {
+						while (fh.forumsLoopStep() > 0) {
 					%>
 					<s:url var="forumUrl" namespace="/forum" action="forum">
 						<s:param name="forum.forumId" value="%{fh.forum.forumId}" />
@@ -33,7 +34,7 @@
 						</td>
 					</tr>
 					<%
-						continue;
+								continue;
 							} //end of if
 					%>
 					<tr <%=fh.getAltClass("forum", fh.getForumClass(null))%>>
@@ -77,22 +78,33 @@
 					</li>
 				</ul>
 			</div><!-- id=feeds -->
-
+			<div id="views">
+				<h2>Views</h2>
+				<ul>
+					<li><a href="http://bbpress.org/forums/view/no-replies">Topics
+							with no replies</a>
+					</li>
+					<li class="alt"><a
+						href="http://bbpress.org/forums/view/untagged">Topics with no
+							tags</a>
+					</li>
+					<li><a href="http://bbpress.org/forums/view/support-forum-no">Support
+							topics that are not resolved and are more than 2 hours old</a>
+					</li>
+				</ul>
+			</div><!--  id="views" -->
 		</div><!-- id=grid_4 -->
+		
 		<div class="grid_8">
 			<div id="discussions">
-				<h2>
-					Topics<span> &#8212; <a
-						href="http://bbpress.org/forums/bb-login.php?redirect_to=http://bbpress.org/forums/?new=1"
-						class="new-topic">start new</a> </span>
+				<h2><s:url var="newTopicUrl"  namespace="/forum" action="newTopic"/>
+					Topics<span> &#8212; <s:a href="%{newTopicUrl}"  cssClass="new-topic">start new</s:a> </span>
 				</h2>
 
 				<table id="latest">
 				 <thead>
 					<tr>
-						<th class="topic">Topic &#8212; <a
-							href="http://usemodj.com/bbpress/bb-login.php?re=http://usemodj.com/bbpress/?new=1"
-							class="new-topic">Add New &raquo;</a>
+						<th class="topic">&nbsp;
 						</th>
 						<th class="num">Posts</th>
 						<th class="num">Voices</th>
@@ -171,8 +183,8 @@
 					</s:iterator>
 					</tbody>
 				</table>
+				<s:property value="getTopicPages('index')"  escapeHtml="false" />
 			</div> <!--  id=discussions -->
-			<s:property value="getTopicPages()"  escapeHtml="false" />
 			
 		</div> <!-- id=grid_8 -->
 		<div class="clear"></div>

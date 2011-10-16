@@ -10,16 +10,29 @@
 	   		<interceptor name="login" class="com.usemodj.forum.interceptor.LoginInterceptor"/>
 	       <interceptor-stack name="authStack">
 	          <interceptor-ref name="login"/>
-	        <interceptor-ref name="defaultStack"/>
+	         <interceptor-ref name="defaultStack"/>
 	       </interceptor-stack>
+	       
+	       
 	  </interceptors>
+	   <!-- Make the defaultLoginStack the default one used
+                for all actions unless otherwise configured. -->
+        <!--  <default-interceptor-ref name="authStack" />-->
         <global-results>
+            <result name="error">/forum/default/error.jsp</result>
             <result name="login">/forum/default/login.jsp</result>
-            <result name="login-success" type="redirectAction">/forum/</result>
+            <result name="login-success" type="redirect">${url}</result>
         </global-results>
+        
+ 	    <action name="login" class="com.usemodj.forum.struts.action.LoginAction" >
+            <result name="success" type="redirect">${url}</result>
+		</action>
+  	    <action name="register" class="com.usemodj.forum.struts.action.RegisterAction" >
+  	    	<result name="input" >/forum/default/register.jsp</result>
+             <result name="success" >/forum/default/registerSuccess.jsp</result>
+		</action>
     
-	    
- 	    <action name="topic" class="com.usemodj.forum.struts.action.TopicAction" >
+	    <action name="topic" class="com.usemodj.forum.struts.action.TopicAction" >
 			<result name="success">/forum/default/topic.jsp</result>
 		</action>
 		
@@ -34,6 +47,7 @@
 	        <!--result name="success" type="redirectAction">index.action</result-->
 	    	<result name="redirect" type="redirect">${url}</result>
 	        <result name="forum">/forum/default/forum.jsp</result>
+	        <result name="newTopic">/forum/default/newTopic.jsp</result>
 	    </action>
        <!-- Add actions here -->
     </package>

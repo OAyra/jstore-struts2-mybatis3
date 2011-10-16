@@ -1,7 +1,12 @@
 /*
 Theme Name:
 */
- @import url('bb-style.css'); 
+ @import url('./bb-style.css'); 
+
+ /* struts2 */
+form  .errorMessage {
+ 	color: #1282c1;
+ }
 /* Forum Stylesheet */
 #forums table {
 	font-size: 12px;
@@ -36,13 +41,13 @@ Theme Name:
 }
 
 #forums table th.start {
-	background-image: url('images/th-start-background.gif');
+	background-image: url('./images/th-start-background.gif');
 	background-repeat: repeat-y;
 	background-position: 0 0;
 }
 
 #forums table th.end {
-	background-image: url('images/th-end-background.gif');
+	background-image: url('./images/th-end-background.gif');
 	background-repeat: repeat-y;
 	background-position: 100% 0;
 }
@@ -195,7 +200,7 @@ Theme Name:
 	display: block;
 	height: 16px;
 	background: transparent
-		url('' images/ feed-icons/ feed-icon-16x16.gif ') no-repeat scroll 0 0;
+		url('./images/feed-icon-16x16.gif ') no-repeat scroll 0 0;
 	line-height: 16px;
 	font-weight: bold;
 	text-decoration: none;
@@ -309,7 +314,7 @@ Theme Name:
 	background-color: rgb(200, 200, 200);
 	padding-right: 22px;
 	-webkit-appearance: textfield;
-	background-image: url('images/select-arrows.gif');
+	background-image: url('./images/select-arrows.gif');
 	background-repeat: no-repeat;
 	background-position: 100% 50%;
 }
@@ -465,7 +470,7 @@ Theme Name:
 	background-color: rgb(200, 200, 200);
 	padding-right: 22px;
 	-webkit-appearance: textfield;
-	background-image: url('images/select-arrows.gif');
+	background-image: url('./images/select-arrows.gif');
 	background-repeat: no-repeat;
 	background-position: 100% 50%;
 }
@@ -503,17 +508,17 @@ Theme Name:
 }
 
 #discussion #thread li.post.alt {
-	background-image: url('images/post-alt-background.gif');
+	background-image: url('./images/post-alt-background.gif');
 	background-repeat: repeat-y;
 	background-position: 0 0;
 }
 
 #discussion #thread li.post.deleted {
-	background-image: url('images/post-deleted-background.gif');
+	background-image: url('./images/post-deleted-background.gif');
 }
 
 #discussion #thread li.post.spam {
-	background-image: url('images/post-spam-background.gif');
+	background-image: url('./images/post-spam-background.gif');
 }
 
 #discussion #thread li.post li.before-post-undelete-link {
@@ -620,12 +625,12 @@ Theme Name:
 	margin-left: 15px;
 	padding-left: 20px;
 	color: rgb(103, 103, 103);
-	background: transparent url('images/post-blockquote-background.gif')
+	background: transparent url('./images/post-blockquote-background.gif')
 		no-repeat scroll 0 0;
 }
 
 #post-new,#post-closed {
-	background: transparent url('images/post-new-background.gif') repeat-y
+	background: transparent url('./images/post-new-background.gif') repeat-y
 		scroll 0 0;
 	color: rgb(51, 51, 51);
 }
@@ -666,7 +671,7 @@ Theme Name:
 	margin: 4px !important;
 	padding: 5px 6px;
 	line-height: 1.6em;
-	background: transparent url(images/ post-form-allowed-background.gif ')
+	background: transparent url('./images/post-form-allowed-background.gif ')
 		repeat-y scroll 0 0;
 	color: rgb(102, 102, 102);
 	font-size: 0.85em;
@@ -717,7 +722,7 @@ Theme Name:
 	margin: 4px !important;
 	padding: 5px 6px;
 	line-height: 1.6em;
-	background: transparent url('images/post-form-allowed-background.gif')
+	background: transparent url('./images/post-form-allowed-background.gif')
 		repeat-y scroll 0 0;
 	color: rgb(102, 102, 102);
 	font-size: 0.85em;
@@ -768,9 +773,8 @@ Theme Name:
 
 #topic-support-status,#forum-id {
 	background-color: rgb(200, 200, 200);
-	padding-right: 26px;
-	-webkit-appearance: textfield;
-	background-image: url('images/select-arrows.gif');
+	padding-right: 26px;	-webkit-appearance: textfield;
+	background-image: url('./images/select-arrows.gif');
 	background-repeat: no-repeat;
 	background-position: 100% 50%;
 	margin-right: 5px;
@@ -803,7 +807,7 @@ Theme Name:
 
 #discussions #postform {
 	font-size: 0.9em;
-	background: transparent url('images/topic-new-background.gif') repeat-y
+	background: transparent url('./images/topic-new-background.gif') repeat-y
 		scroll 0 0;
 	padding: 5px 0;
 	margin: 0;
@@ -877,4 +881,322 @@ Theme Name:
 tr.form-field {
 	text-align: left;
 	margin-bottom: .75em;
+}
+.required {
+	color: red;
+}
+<!-- login/register/profile -->
+
+#login-page fieldset, #register-page fieldset, #profile-page fieldset {
+    background-color: #F6F6F6;
+    border-bottom-color: #CCCCCC;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: -moz-use-text-color;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: none;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: medium;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: -moz-use-text-color;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: none;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: medium;
+    border-top-color: #CCCCCC;
+    border-top-style: double;
+    border-top-width: 3px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 0;
+    padding-top: 10px;
+}
+#login-page legend, #register-page legend, #profile-page legend {
+    font-weight: bold;
+    padding-bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0;
+}
+#login-page fieldset table, #register-page fieldset table, #profile-page fieldset table {
+    border-collapse: collapse;
+    margin-bottom: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 0;
+    text-align: left;
+    width: 95%;
+}
+#login-page fieldset table th, #register-page fieldset table th, #profile-page fieldset table th {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 1em;
+    padding-top: 5px;
+    text-align: right;
+    vertical-align: top;
+    width: 20%;
+}
+#login-page fieldset table tr.error th em, #register-page fieldset table tr.error th em, #profile-page fieldset table tr.error th em {
+    color: red;
+    font-style: normal;
+    left: 458px;
+    margin-left: 1em;
+    position: absolute;
+}
+#login-page fieldset table td, #register-page fieldset table td, #profile-page fieldset table td {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+#login-page fieldset table td p, #register-page fieldset table td p, #profile-page fieldset table td p {
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+}
+#login-page fieldset input[type="text"], #register-page fieldset input[type="text"], #profile-page fieldset input[type="text"], #login-page fieldset input[type="password"], #profile-page fieldset input[type="password"] {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom-color: #CCCCCC;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #CCCCCC;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #CCCCCC;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #CCCCCC;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    font-size: 16px;
+    line-height: 14px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 4px;
+    width: 280px;
+}
+#login-page fieldset p, #register-page fieldset p, #profile-page fieldset p {
+    font-size: 11px;
+    margin-bottom: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 10px;
+}
+#login-page tr.form-required label:before, #register-page tr.form-required label:before, #profile-page tr.form-required label:before, p.required-message:before {
+    color: red;
+    content: " * ";
+    vertical-align: 10%;
+}
+.form-invalid {
+    background-color: #FFEBE8 !important;
+}
+.form-invalid input {
+    -moz-border-bottom-colors: none !important;
+    -moz-border-image: none !important;
+    -moz-border-left-colors: none !important;
+    -moz-border-right-colors: none !important;
+    -moz-border-top-colors: none !important;
+    border-bottom-color: #CC0000 !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 1px !important;
+    border-left-color-ltr-source: physical !important;
+    border-left-color-rtl-source: physical !important;
+    border-left-color-value: #CC0000 !important;
+    border-left-style-ltr-source: physical !important;
+    border-left-style-rtl-source: physical !important;
+    border-left-style-value: solid !important;
+    border-left-width-ltr-source: physical !important;
+    border-left-width-rtl-source: physical !important;
+    border-left-width-value: 1px !important;
+    border-right-color-ltr-source: physical !important;
+    border-right-color-rtl-source: physical !important;
+    border-right-color-value: #CC0000 !important;
+    border-right-style-ltr-source: physical !important;
+    border-right-style-rtl-source: physical !important;
+    border-right-style-value: solid !important;
+    border-right-width-ltr-source: physical !important;
+    border-right-width-rtl-source: physical !important;
+    border-right-width-value: 1px !important;
+    border-top-color: #CC0000 !important;
+    border-top-style: solid !important;
+    border-top-width: 1px !important;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
+}
+.hidden {
+    display: none;
+}
+#pass-strength-result {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #E3E3E3;
+    border-bottom-color: #CCCCCC;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #CCCCCC;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #CCCCCC;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #CCCCCC;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    text-align: center;
+    width: 280px;
+}
+#pass-strength-result.bad {
+    background-color: #FFEFF7;
+    border-bottom-color: #CC6699;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #CC6699;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #CC6699;
+    border-top-color: #CC6699;
+}
+#pass-strength-result.good {
+    background-color: #EFFFF4;
+    border-bottom-color: #66CC87;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #66CC87;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #66CC87;
+    border-top-color: #66CC87;
+}
+#pass-strength-result.short {
+    background-color: #E3E3E3;
+}
+#pass-strength-result.strong {
+    background-color: #59EF86;
+    border-bottom-color: #319F52;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #319F52;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #319F52;
+    border-top-color: #319F52;
+}
+p.submit input {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #CCCCCC;
+    border-bottom-color: #999999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #999999;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #999999;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #999999;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+}
+p.submit input:hover {
+    background-color: #DDDDDD;
+    color: #006400;
+}
+p.submit input:active {
+    border-bottom-color: #006400;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #006400;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #006400;
+    border-top-color: #006400;
 }

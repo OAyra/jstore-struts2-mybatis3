@@ -31,6 +31,7 @@ public class TopicAction extends BaseAction {
 	ForumService forumService = new ForumService();
 	MetaService metaService = new MetaService();
 	Topic topic = null;
+	Post post = null;
 	List<Post> posts = null;
 	Forum  forum = null;
 	 Paginate paginate = new Paginate();
@@ -56,10 +57,11 @@ public class TopicAction extends BaseAction {
 			this.posts = postService.getPosts( sqlSession, view, this.paginate);
 			this.forum = forumService.getForum( sqlSession, this.topic.getForumId());
 			
+			
 			this.siteName = metaService.getBBOption(sqlSession, "name");
 			//forum's bread crumb
-			String cssClass = "";
-			this.breadcrumbs = forumService.getForumBreadCrumb( sqlSession,  request.getContextPath(), this.getForum().getForumId(),  "&raquo;", cssClass, true);
+			String cssClass = "class='current'";
+			this.breadcrumbs = forumService.getForumBreadCrumb( sqlSession,  request.getContextPath(), this.getForum().getForumId(),  "&raquo;", cssClass, false);
 
 			boolean isAdmin = false;
 			boolean browseDeleted = true;
@@ -69,6 +71,10 @@ public class TopicAction extends BaseAction {
 			int voices  = getTopicVoices(sqlSession, this.topic);
 			this.topicVoices = ( 1 < voices)?  String.format(" %d voices",  voices):  String.format(" %d voice",  voices);	
 			this.topicLastPostLink = getTopicLastPostLink( this.topic);
+			
+			//TODO: Top Tags
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -170,7 +176,7 @@ public class TopicAction extends BaseAction {
 		String nextTitle = getText( "Next page");
 		String nTitle = getText("Page %d");
 		int perPage = Paginate.PER_PAGE;
-		int midSize = 2; 
+		int midSize = 1; 
 		int endSize = 1;
 		LinkType type = LinkType.FLAT;
 		String addFragment ="";
@@ -196,7 +202,7 @@ public class TopicAction extends BaseAction {
 		
 		StringBuffer buf = new StringBuffer();
 		if(( "all".equals(view)  || isAdmin) && browseDeleted )
-			buf.append("<a href='").append( getTopicLink( request.getContextPath(), topic.getTopicId(), page, view))
+			buf.append("<a href='").append( getTopicLink( request.getContextPath(), topic.getTopicId(), page, null))
 			.append( "'>").append( posts).append("</a>");
 		else
 			buf.append( posts);
@@ -222,7 +228,7 @@ public class TopicAction extends BaseAction {
 					logger.debug("-- view: "+ view);
 					buf.append( extra	);
 				}else	{
-					buf.append( " <a href='").append(  getTopicLink(contextPath, topic.getTopicId(), page, view))
+					buf.append( " <a href='").append(  getTopicLink(contextPath, topic.getTopicId(), page, "all"))
 					.append("'>").append( extra).append("</a>");
 				}
 			}
@@ -252,14 +258,14 @@ public class TopicAction extends BaseAction {
 			voices = Integer.parseInt( topic.getMetaValue("voices_count"));
 		} catch (NumberFormatException e) {
 			 voices = postService.getTopicVoices( sqlSession, topic.getTopicId());
-			updateTopicMeta( sqlSession, topic.getTopicId(), "voices_count", voices);
+			updateTopicMeta( sqlSession, topic.getTopicId(), "voices_count",  String.valueOf(voices));
 		}
 		return voices;
 	}
 	
 	
 	private void updateTopicMeta(SqlSession sqlSession, long topicId,
-			String metaKey, int metaValue) throws Exception {
+			String metaKey, String metaValue) throws Exception {
 		metaService.updateMeta( sqlSession, topicId, metaKey, metaValue, "bb_topic");
 		
 	}
@@ -354,5 +360,12 @@ public class TopicAction extends BaseAction {
 		this.topicLastPostLink = topicLastPostLink;
 	}
 
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
 	
 }

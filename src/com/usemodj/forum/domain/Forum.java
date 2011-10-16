@@ -23,8 +23,10 @@ import java.util.Map;
  */
 
 public class Forum implements Serializable {
-
-	 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3550732906006844886L;
 	int  	forumId     ;	//  int(10) PK
 	String  forumName   ;	//  varchar(150)
 	String  forumSlug   ;	//  varchar(255)
@@ -33,8 +35,7 @@ public class Forum implements Serializable {
 	int	forumOrder  ;	//  int(10)
 	long  	topics      ;	//   bigint(20)
 	long  	posts       ;	//   bigint(20)  * 
-	Meta meta = null;
-	Map metas = new HashMap();
+	Map<String, String> metas = new HashMap<String, String>();
 	
 	public Forum(){
 		
@@ -42,6 +43,14 @@ public class Forum implements Serializable {
 	
 	public Forum( int forumId) {
 		this.forumId = forumId;
+	}
+	
+	public int getForumIsCategory(){
+		try {
+			return Integer.parseInt( getMetaValue("forum_is_category"));
+		} catch (NumberFormatException e) {
+			return 0;
+		}
 	}
 
 	// Setters /Getters methods
@@ -109,27 +118,20 @@ public class Forum implements Serializable {
 	public void setPosts(long posts) {
 		this.posts = posts;
 	}
-
-	public Meta getMeta() {
-		return meta;
-	}
-
-	public void setMeta(Meta meta) {
-		this.meta = meta;
-	}
 	
 	public void setMetaValue(String metaKey, String metaValue) {
 		this.metas.put(metaKey, metaValue);
 	}
 	public String getMetaValue( String metaKey) {
-		return (String) this.metas.get(metaKey);
+		return this.metas.get(metaKey);
+	}
+
+	public Map<String, String> getMetas() {
+		return metas;
+	}
+
+	public void setMetas(Map<String, String> metas) {
+		this.metas = metas;
 	}
 	
-	public int getForumIsCategory(){
-		try {
-			return Integer.parseInt( getMetaValue("forum_is_category"));
-		} catch (NumberFormatException e) {
-			return 0;
-		}
-	}
 }

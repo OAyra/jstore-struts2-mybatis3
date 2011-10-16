@@ -7,7 +7,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -17,12 +20,14 @@ import org.apache.struts2.util.ServletContextAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.usemodj.forum.Location;
 import com.usemodj.forum.mybatis.builder.ForumMybatisConfig;
+import com.usemodj.forum.service.MetaService;
 import com.usemodj.mybatis.builder.MybatisConfig;
 import com.usemodj.struts.Constants;
 
 public class BaseAction extends ActionSupport implements SessionAware,
 		ApplicationAware, ServletRequestAware,ServletResponseAware, ServletContextAware {
-
+		private static Logger logger = Logger.getLogger( BaseAction.class);
+		
     /**
      * A default implementation that does nothing an returns "success".
      * <p/>
@@ -166,6 +171,7 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	}
 	
 	Location location;
+	protected  String siteName;
 
 	public Location getLocation() {
 		return location;
@@ -174,5 +180,21 @@ public class BaseAction extends ActionSupport implements SessionAware,
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-
+	public String getSiteName() {
+		if( StringUtils.isBlank(this.siteName) || null == (this.siteName = (String)getSession("siteName")) ){
+			MetaService  metaService = new MetaService();
+			SqlSession  sqlSession = null;
+			//site name
+			try {
+				sqlSession = this.getForumSqlSessionFactory().openSession();
+				this.siteName = metaService.getBBOption(sqlSession, "name");
+				if( null != this.siteName) this.setSession("siteName", this.siteName);
+					
+			} catch (Exception e) {
+				//e.printStackTrace();
+				logger.error(" -- BaseAction getSiteName() Exception: "+ e.getMessage());
+			}
+		}
+		return this.siteName;
+	}
 }

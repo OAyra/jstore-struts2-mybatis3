@@ -77,12 +77,14 @@ public class ForumsHierarchical {
 				if( root == leaf.getForumParent()) {
 					int newRoot = leaf.getForumId();
 					_leaves.remove( k);
-					branch.put( (long)newRoot, 1 == depth?  Collections.EMPTY_MAP : getForumsHierarchical( newRoot, depth -1, null, true)); // true : Collection.EMPTY_MAP
+					branch.put( (long)newRoot, (1 == depth)?  Collections.EMPTY_MAP : getForumsHierarchical( newRoot, depth -1, null, true)); // true : Collection.EMPTY_MAP
 					continue RESET;
 				} 
 			}
 			break RESET;
 		} //end of for(;;)
+		
+		logger.debug("== ForumsHierachical : branch: " + branch.toString());
 		
 		if( !recursed){
 			if( 0 == root)
@@ -173,17 +175,17 @@ public class ForumsHierarchical {
 	}
 	
 	/* bb_forum() */
-	public boolean forumsLoopStep(){
-		 if( null == this.forumsLoop) return false;
+	public int  forumsLoopStep(){
+		 if( null == this.forumsLoop) return 0;
 		if(  this.forumsLoop.step()){
 			this.forum = (Forum) this.forumsLoop.elementValues.get( this.forumsLoop.getIndex());
 		} else {
 			//TODO: reinstate()
 			//this.forumsLoop.reinstate();
-			this.forumsLoop = null;
-			return false;
+			//this.forumsLoop = null;
+			return 0;
 		}
-		return true;	
+		return this.forumsLoop.walker.depth;	
 	}
 	
 	public String getForumClass( String cssClass) {
@@ -206,7 +208,7 @@ public class ForumsHierarchical {
 		return css;
 	}
 	public boolean isForumIsCategory() {
-		return  null != this.forum.getMeta() && "forum_is_category".equals( this.forum.getMeta().getMetaKey()) && "1".equals(this.forum.getMeta().getMetaValue());
+		return "1".equals( forum.getMetaValue("forum_is_category"));
 	}
 
 

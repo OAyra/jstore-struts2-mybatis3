@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>bbPress Support Forums</title>
+<link rel="stylesheet" href="/common-theme/960/reset.css"
+	type="text/css" />
+<link rel="stylesheet" href="/common-theme/960/text.css" type="text/css" />
+<link rel="stylesheet" href="/common-theme/960/960.css" type="text/css" />
+<link rel="stylesheet"
+	href="http://bbpress.org/forum-theme/bborg/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Recent Posts"
+	href="http://bbpress.org/forums/rss/" />
+<link rel="alternate" type="application/rss+xml"
+	title="bbPress Support Forums &raquo; Recent Topics"
+	href="http://bbpress.org/forums/rss/topics" />
+<meta name="generator" content="bbPress 1.1-alpha-2855" />
+<script type='text/javascript'
+	src='http://bbpress.org/forums/bb-includes/js/jquery/jquery.js?ver=1.4.2'></script>
+<script type="text/javascript">
+	window.onload = function() {
+		var watched = document.getElementById('forum-id');
+		var affected = document.getElementById('topic-support-status');
+		var forums = '|1|2|3|4|';
+		if (forums.indexOf('|' + watched.value + '|') === -1) {
+			affected.disabled = 'disabled';
+		}
+		watched.onchange = function() {
+			var current = (watched.options[watched.selectedIndex].value);
+			if (forums.indexOf('|' + current + '|') === -1) {
+				affected.disabled = 'disabled';
+			} else {
+				affected.disabled = false;
+			}
+		}
+	}
+</script>
+</head>
+<body id="front-page">
+	<div id="bborg-banner-container">
+		<div id="bborg-banner" role="banner" class="container_12">
+			<div class="grid_3">
+				<h1 id="bborg-title">
+					<a href="/">bbPress</a>
+				</h1>
+			</div>
+			<div class="grid_9">
+				<ul id="bborg-nav">
+					<li><a href="/">Home</a>
+					</li>
+					<li><a href="/plugins/">Plugins</a>
+					</li>
+					<li><a href="/about/">About</a>
+					</li>
+					<li><a href="/documentation/">Docs</a>
+					</li>
+					<li><a href="/blog/">Blog</a>
+					</li>
+					<li><a class="current" href="/forums/">Forums</a>
+					</li>
+					<li><a class="download" href="/download/">Download</a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="bborg-login-container">
+		<div class="container_12">
+			<h2>Forums</h2>
+
+
+			<div id="bborg-login">
+				<p>
+					Welcome, <a href='http://bbpress.org/forums/profile/usemodj'>usemodj</a>
+				</p>
+				<ul>
+					<li></li>
+					<li><a
+						href="http://bbpress.org/forums/bb-login.php?action=logout">Log
+							Out</a>
+					</li>
+				</ul>
+				<div class="clear"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div role="main" class="container_12">
+		<div class="grid_4">
+			<div id="bborg-forums">
+				<h2>Forums</h2>
+				<table>
+					<thead>
+						<tr>
+							<th class="forum "></th>
+							<th class="num end">Topics</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bb-precedes-sibling bb-root">
+							<td><a href="http://bbpress.org/forums/forum/installation">Installation
+									<div>Getting it up and running</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/installation">2,397</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root alt">
+							<td><a
+								href="http://bbpress.org/forums/forum/troubleshooting">Troubleshooting
+									<div>Fixing it when it's broke</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/troubleshooting">3,013</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root">
+							<td><a href="http://bbpress.org/forums/forum/templates">Themes
+									<div>Making it look purtee</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/templates">837</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root alt">
+							<td><a href="http://bbpress.org/forums/forum/plugins">Plugins
+									<div>Making it do what it ain't supposed to</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/plugins">1,284</a>
+							</td>
+						</tr>
+						<tr class="bb-precedes-sibling bb-follows-sibling bb-root">
+							<td><a
+								href="http://bbpress.org/forums/forum/requests-and-feedback">Requests
+									and Feedback
+									<div>Tell us what you're thinking</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/requests-and-feedback">984</a>
+							</td>
+						</tr>
+						<tr class="bb-last-child bb-follows-sibling bb-root alt">
+							<td><a
+								href="http://bbpress.org/forums/forum/pimp-your-press">Pimp
+									your Press
+									<div>A place to show off how awesome you and bbPress are</div>
+							</a></td>
+							<td class="num"><a
+								href="http://bbpress.org/forums/forum/pimp-your-press">316</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="bborg-simple-search">
+				<form role="search" action="http://bbpress.org/forums/search.php"
+					method="get">
+					<fieldset>
+						<label for="bborg-simple-search-input">Search</label> <input
+							id="bborg-simple-search-input" name="q" type="search"
+							autosave="bbpress-org-forums" results="10" maxlength="100" /> <input
+							type="submit" value="Search" />
+					</fieldset>
+				</form>
+			</div>
+			<div id="bborg-hottags">
+				<h2>Hot Tags</h2>
+				<p>
+					<a href='http://bbpress.org/forums/tags/404' title='92 topics'
+						rel='tag' style='font-size: 8.3pt;'>404</a> <a
+						href='http://bbpress.org/forums/tags/admin' title='137 topics'
+						rel='tag' style='font-size: 8.8pt;'>admin</a> <a
+						href='http://bbpress.org/forums/tags/akismet' title='69 topics'
+						rel='tag' style='font-size: 8pt;'>akismet</a> <a
+						href='http://bbpress.org/forums/tags/alpha' title='78 topics'
+						rel='tag' style='font-size: 8.1pt;'>alpha</a> <a
+						href='http://bbpress.org/forums/tags/avatar' title='98 topics'
+						rel='tag' style='font-size: 8.4pt;'>avatar</a> <a
+						href='http://bbpress.org/forums/tags/bbpress' title='410 topics'
+						rel='tag' style='font-size: 12.2pt;'>bbPress</a> <a
+						href='http://bbpress.org/forums/tags/buddypress'
+						title='172 topics' rel='tag' style='font-size: 9.3pt;'>buddypress</a>
+					<a href='http://bbpress.org/forums/tags/cookies' title='118 topics'
+						rel='tag' style='font-size: 8.6pt;'>cookies</a> <a
+						href='http://bbpress.org/forums/tags/css' title='202 topics'
+						rel='tag' style='font-size: 9.6pt;'>css</a> <a
+						href='http://bbpress.org/forums/tags/database' title='93 topics'
+						rel='tag' style='font-size: 8.3pt;'>database</a> <a
+						href='http://bbpress.org/forums/tags/email' title='93 topics'
+						rel='tag' style='font-size: 8.3pt;'>email</a> <a
+						href='http://bbpress.org/forums/tags/error' title='178 topics'
+						rel='tag' style='font-size: 9.4pt;'>error</a> <a
+						href='http://bbpress.org/forums/tags/forum' title='127 topics'
+						rel='tag' style='font-size: 8.7pt;'>Forum</a> <a
+						href='http://bbpress.org/forums/tags/help' title='75 topics'
+						rel='tag' style='font-size: 8.1pt;'>help</a> <a
+						href='http://bbpress.org/forums/tags/htaccess' title='68 topics'
+						rel='tag' style='font-size: 8pt;'>htaccess</a> <a
+						href='http://bbpress.org/forums/tags/i18n' title='99 topics'
+						rel='tag' style='font-size: 8.4pt;'>i18n</a> <a
+						href='http://bbpress.org/forums/tags/install' title='102 topics'
+						rel='tag' style='font-size: 8.4pt;'>install</a> <a
+						href='http://bbpress.org/forums/tags/installation'
+						title='193 topics' rel='tag' style='font-size: 9.5pt;'>installation</a>
+					<a href='http://bbpress.org/forums/tags/integration'
+						title='1207 topics' rel='tag' style='font-size: 22pt;'>integration</a>
+					<a href='http://bbpress.org/forums/tags/keymaster'
+						title='72 topics' rel='tag' style='font-size: 8pt;'>keymaster</a>
+					<a href='http://bbpress.org/forums/tags/login' title='203 topics'
+						rel='tag' style='font-size: 9.7pt;'>login</a> <a
+						href='http://bbpress.org/forums/tags/permalinks'
+						title='121 topics' rel='tag' style='font-size: 8.7pt;'>Permalinks</a>
+					<a href='http://bbpress.org/forums/tags/phpbb' title='81 topics'
+						rel='tag' style='font-size: 8.2pt;'>phpBB</a> <a
+						href='http://bbpress.org/forums/tags/plugin' title='1030 topics'
+						rel='tag' style='font-size: 19.8pt;'>plugin</a> <a
+						href='http://bbpress.org/forums/tags/plugins' title='137 topics'
+						rel='tag' style='font-size: 8.8pt;'>plugins</a> <a
+						href='http://bbpress.org/forums/tags/problem' title='78 topics'
+						rel='tag' style='font-size: 8.1pt;'>problem</a> <a
+						href='http://bbpress.org/forums/tags/profile' title='125 topics'
+						rel='tag' style='font-size: 8.7pt;'>profile</a> <a
+						href='http://bbpress.org/forums/tags/registration'
+						title='117 topics' rel='tag' style='font-size: 8.6pt;'>registration</a>
+					<a href='http://bbpress.org/forums/tags/rss' title='94 topics'
+						rel='tag' style='font-size: 8.3pt;'>RSS</a> <a
+						href='http://bbpress.org/forums/tags/spam' title='82 topics'
+						rel='tag' style='font-size: 8.2pt;'>spam</a> <a
+						href='http://bbpress.org/forums/tags/tags' title='133 topics'
+						rel='tag' style='font-size: 8.8pt;'>tags</a> <a
+						href='http://bbpress.org/forums/tags/template' title='159 topics'
+						rel='tag' style='font-size: 9.1pt;'>template</a> <a
+						href='http://bbpress.org/forums/tags/theme' title='186 topics'
+						rel='tag' style='font-size: 9.5pt;'>theme</a> <a
+						href='http://bbpress.org/forums/tags/themes' title='114 topics'
+						rel='tag' style='font-size: 8.6pt;'>themes</a> <a
+						href='http://bbpress.org/forums/tags/translation'
+						title='81 topics' rel='tag' style='font-size: 8.2pt;'>translation</a>
+					<a href='http://bbpress.org/forums/tags/upgrade' title='73 topics'
+						rel='tag' style='font-size: 8.1pt;'>upgrade</a> <a
+						href='http://bbpress.org/forums/tags/user' title='70 topics'
+						rel='tag' style='font-size: 8pt;'>user</a> <a
+						href='http://bbpress.org/forums/tags/users' title='77 topics'
+						rel='tag' style='font-size: 8.1pt;'>users</a> <a
+						href='http://bbpress.org/forums/tags/wordpress' title='453 topics'
+						rel='tag' style='font-size: 12.7pt;'>WordPress</a> <a
+						href='http://bbpress.org/forums/tags/wpmu' title='201 topics'
+						rel='tag' style='font-size: 9.6pt;'>wpmu</a>
+				</p>
+			</div>
+			<div id="bborg-feeds">
+				<ul>
+					<li><a href="http://bbpress.org/forums/rss/">All Recent
+							Posts</a>
+					</li>
+					<li><a href="http://bbpress.org/forums/rss/topics">All
+							Recent Topics</a>
+					</li>
+				</ul>
+			</div>
+			<div id="bborg-views">
+				<h2>Views</h2>
+				<ul>
+					<li><a href="http://bbpress.org/forums/view/no-replies">Topics
+							with no replies</a>
+					</li>
+					<li class="alt"><a
+						href="http://bbpress.org/forums/view/untagged">Topics with no
+							tags</a>
+					</li>
+					<li><a href="http://bbpress.org/forums/view/support-forum-no">Support
+							topics that are not resolved and are more than 2 hours old</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="grid_8">
+			<div id="bborg-discussions">
+				<h2>
+					Start New Topic<span> &#8212; <a
+						href="http://bbpress.org/forums/">cancel</a>
+					</span>
+				</h2>
+				<form class="postform post-form" id="postform" method="post"
+					action="http://bbpress.org/forums/bb-post.php">
+					<fieldset>
+
+						<div id="position-new">
+							<div class="grid_8 alpha omega">
+								<div id="post-form-title-container">
+									<label id="topic-label" for="topic">Title</label> <input
+										name="topic" type="text" id="topic" size="50" maxlength="80"
+										tabindex="1" />
+									<script type="text/javascript" charset="utf-8">
+										var topic_label = document
+												.getElementById('topic-label');
+										var topic_input = document
+												.getElementById('topic');
+										topic_label.onclick = function() {
+											topic_input.focus();
+										}
+										topic_input.onfocus = function() {
+											if (topic_input.value === '') {
+												jQuery('#topic-label').fadeOut(
+														'fast');
+											}
+										}
+										topic_input.onblur = function() {
+											if (topic_input.value === '') {
+												jQuery('#topic-label').fadeIn(
+														'fast');
+											}
+										}
+									</script>
+								</div>
+								<div id="topic-support-status-container">
+									<label for="topic-support-status">Status</label> <select
+										name="topic_support_status" id="topic-support-status"
+										tabindex="1">
+										<option value="yes">resolved</option>
+										<option value="no" selected="selected">not resolved</option>
+										<option value="mu">not a support question</option>
+									</select>
+								</div>
+								<div id="post-form-post-container">
+									<p id="post-form-allowed-container" class="allowed">
+										Allowed markup:
+										<code>a blockquote code em strong ul ol li</code>
+										. <br />You can also put code in between backtick (
+										<code>`</code>
+										) characters.
+									</p>
+									<label for="post_content">Post</label>
+									<textarea name="post_content" cols="50" rows="8"
+										id="post_content" tabindex="2"></textarea>
+									<script type="text/javascript" charset="utf-8">
+										var post_allowed = document
+												.getElementById('post-form-allowed-container');
+										var post_content = document
+												.getElementById('post_content');
+										post_allowed.onclick = function() {
+											post_content.focus();
+										}
+										post_content.onfocus = function() {
+											if (post_content.value === '') {
+												jQuery(
+														'#post-form-allowed-container')
+														.fadeOut('fast');
+											}
+										}
+										post_content.onblur = function() {
+											if (post_content.value === '') {
+												jQuery(
+														'#post-form-allowed-container')
+														.fadeIn('fast');
+											}
+										}
+									</script>
+								</div>
+								<div id="post-form-tags-container">
+									<label id="tags-label" for="tags-input">Tags (comma
+										seperated)</label> <input id="tags-input" name="tags" type="text"
+										size="50" maxlength="100" value="" tabindex="3" />
+									<script type="text/javascript" charset="utf-8">
+										var tags_label = document
+												.getElementById('tags-label');
+										var tags_input = document
+												.getElementById('tags-input');
+										tags_label.onclick = function() {
+											tags_input.focus();
+										}
+										tags_input.onfocus = function() {
+											if (tags_input.value === '') {
+												jQuery('#tags-label').fadeOut(
+														'fast');
+											}
+										}
+										tags_input.onblur = function() {
+											if (tags_input.value === '') {
+												jQuery('#tags-label').fadeIn(
+														'fast');
+											}
+										}
+									</script>
+								</div>
+								<div id="post-form-forum-container">
+									<label for="forum-id">Forum</label> <select name="forum_id"
+										id="forum-id" tabindex="4">
+
+										<option value="1" selected="selected">Installation</option>
+
+										<option value="2">Troubleshooting</option>
+
+										<option value="3">Themes</option>
+
+										<option value="4">Plugins</option>
+
+										<option value="5">Requests and Feedback</option>
+
+										<option value="6">Pimp your Press</option>
+									</select>
+								</div>
+								<div id="post-form-submit-container" class="submit">
+									<input type="submit" id="postformsub" name="Submit"
+										value="Create Topic" tabindex="5" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<input type="hidden" id="_wpnonce" name="_wpnonce"
+							value="889f2ecac2" /><input type="hidden"
+							name="_wp_http_referer" value="/forums/?new=1" /> <label
+							for="subscription_checkbox"> <input
+							name="subscription_checkbox" id="subscription_checkbox"
+							type="checkbox" value="subscribe" /> Notify me of follow-up
+							posts via email </label>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+	<div class="clear"></div>
+	<div id="bborg-contentinfo" role="contentinfo" class="container_12">
+		<div id="bborg-extra" class="grid_2">
+			<ul>
+				<li><a href="/about/privacy/">Privacy</a>
+				</li>
+				<li><a href="/about/gpl/"><abbr title="GNU Public License">GPL</abbr>
+				</a>
+				</li>
+			</ul>
+		</div>
+		<div id="bborg-also" class="grid_8">
+			<h2>See also:</h2>
+			<ul>
+				<li><a href="http://wordpress.org/">WordPress.org</a>
+				</li>
+				<!-- <li><a href="http://wordpress.com/">WordPress.com</a></li> -->
+				<li><a href="http://wordpress.tv/">WordPress.TV</a>
+				</li>
+				<li><a href="http://wordcamp.org/">WordCamp</a>
+				</li>
+				<li><a href="http://jobs.wordpress.net/">WP Jobs</a>
+				</li>
+				<li><a href="http://ma.tt/">Matt</a>
+				</li>
+				<li><a
+					href="http://www.facebook.com/pages/bbPress/37285629283/">Fan
+						bbPress on Facebook</a>
+				</li>
+				<li><a href="http://bbpress.org/blog/feed/" class="feed">Blog
+						Feed</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+</body>
+</html>

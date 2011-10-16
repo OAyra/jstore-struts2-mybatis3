@@ -60,7 +60,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th class="topic "></th>
+							<th class="topic"></th>
 							<th class="num">Posts</th>
 							<th class="num">Voices</th>
 							<th class="date end">Last Post</th>

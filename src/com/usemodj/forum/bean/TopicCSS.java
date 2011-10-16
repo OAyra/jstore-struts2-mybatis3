@@ -64,7 +64,7 @@ public class TopicCSS {
 
 	//TODO: getTopicClass: bb_current_user_can( 'browse_deleted' )
 	public String  getTopicClass(String cssClazz,  String key, Location location, boolean isBrowseDeleted) {
-		if( StringUtils.isBlank(cssClazz)) {
+		if( !StringUtils.isBlank(cssClazz)) {
 			String[] css = cssClazz.split(" ");
 			for( String c: css) {
 				this.cssClass.add( c);
@@ -123,7 +123,7 @@ public class TopicCSS {
 			css = " class='"+( ( cssClass != null)? cssClass :  "alt") +"'";
 		else if(null != cssClass && 0 != (Integer)bbAlt.get(key) % 2)
 			css = " class='"+ cssClass + " alt'";
-		logger.debug(" ----- altClass css: "+ css);
+		//logger.debug(" ----- altClass css: "+ css);
 		return css;
 	}
 
@@ -147,8 +147,8 @@ public class TopicCSS {
 		}
 	*
 	 */
-	String getClosedLabel( String label) {
-		logger.debug("-- getClosedLabel  topic.getTopicOpen(): " + topic.getTopicOpen() );
+	public String getClosedLabel( String label) {
+		//logger.debug("-- getClosedLabel  topic.getTopicOpen(): " + topic.getTopicOpen() );
 		if( (byte)0 == this.topic.getTopicOpen())
 			return String.format("[closed] %s", label);
 		return label;
